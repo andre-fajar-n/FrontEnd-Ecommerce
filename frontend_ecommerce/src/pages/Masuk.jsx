@@ -6,12 +6,11 @@ import { connect } from "react-redux";
 class Masuk extends Component {
   postLogin = async () => {
     await this.props.doLogin();
-    if (this.props.isLogin) {
+    if (this.props.dataUser.isLogin) {
       this.props.history.push("/");
     }
   };
   render() {
-    console.warn("cek di masuk", this.props)
     return (
       <section className="content signin">
         <form className="form-signin text-center" onSubmit={(e) => e.preventDefault()}>
@@ -23,7 +22,7 @@ class Masuk extends Component {
           <input type="text" name="" id="inputUsername" placeholder="username" onChange={(e) => this.props.changeInputUsername(e)} /><br /><br />
           <span>Password</span><br />
           <input type="password" name="" id="inputPassword" placeholder="password" onChange={(e) => this.props.changeInputPassword(e)} /><br /><br />
-          <button className="btn btn-lg btn-danger" type="submit" onClick={() => this.props.doLogin()}>Masuk</button><br />
+          <button className="btn btn-lg btn-danger" type="submit" onClick={() => this.postLogin()}>Masuk</button><br />
           <span>Belum punya akun?<Link to="/daftar"> Daftar </Link>disini!</span>
           <div><br />
             {this.props.dataUser.message === '' ? (

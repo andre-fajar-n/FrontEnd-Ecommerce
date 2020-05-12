@@ -2,11 +2,17 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 
-const Header = () => {
+const Header = (props) => {
+  const postSignout = async () => {
+    await props.doLogout()
+    if (!props.is_login) {
+      props.history.push("/");
+    }
+  };
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/" className="navbar-brand">Navbar</Link>
+        <Link to="/" className="navbar-brand">Andreino</Link>
         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -18,11 +24,11 @@ const Header = () => {
                   Action
               </button>
                 <div className="dropdown-menu">
-                  <Link className="dropdown-item" href="#">Action</Link>
-                  <Link className="dropdown-item" href="#">Another action</Link>
-                  <Link className="dropdown-item" href="#">Something else here</Link>
+                  <Link className="dropdown-item" >Action</Link>
+                  <Link className="dropdown-item" >Another action</Link>
+                  <Link className="dropdown-item" >Something else here</Link>
                   <div className="dropdown-divider"></div>
-                  <Link className="dropdown-item" href="#">Separated link</Link>
+                  <Link className="dropdown-item" >Separated link</Link>
                 </div>
               </div>
             </li>
@@ -40,14 +46,26 @@ const Header = () => {
               <i className="fas fa-shopping-cart" style={{ fontSize: "25px" }}></i>
             </li>
             <li className="li-in-navbar">
-              <Link to="/masuk">
-                <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Masuk</button>
-              </Link>
+              {props.dataUser.isLogin ? (
+                <Link to="/profil">
+                  <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Profil</button>
+                </Link>
+              ) : (
+                  <Link to="/masuk">
+                    <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Masuk</button>
+                  </Link>
+                )}
             </li>
             <li className="li-in-navbar">
-              <Link to="/daftar">
-                <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Daftar</button>
-              </Link>
+              {props.dataUser.isLogin ? (
+                <Link onClick={() => postSignout()}>
+                  <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Keluar</button>
+                </Link>
+              ) : (
+                  <Link to="/daftar">
+                    <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Daftar</button>
+                  </Link>
+                )}
             </li>
           </ul>
         </div>

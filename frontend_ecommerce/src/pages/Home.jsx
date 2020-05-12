@@ -3,6 +3,8 @@ import Header from "../components/Header"
 import { splitData, tampilkanHasilSplit } from "../function/function"
 import Footer from "../components/Footer"
 import ListKategori from "../components/KategoriDiHome"
+import { connect } from "react-redux"
+import { doLogout } from "../store/action/user"
 
 class Home extends Component {
   render() {
@@ -10,7 +12,7 @@ class Home extends Component {
     const splitList = splitData(list, 4)
     return (
       <Fragment>
-        <Header />
+        <Header {...this.props} />
         <section className="container">
           {/* start carousel */}
           <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -68,4 +70,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  dataUser: state.user
+})
+
+const mapDispatchToProps = {
+  doLogout
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

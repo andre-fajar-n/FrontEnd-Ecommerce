@@ -33,7 +33,8 @@ export const doLogin = () => {
         // localStorage.setItem("token", response.data.token)
         // localStorage.setItem("isLogin", true)
       })
-      .catch(function () {
+      .catch(function (error) {
+        console.warn("cek error", error)
         dispatch({ type: "DO_LOGIN_FALSE" })
       })
 

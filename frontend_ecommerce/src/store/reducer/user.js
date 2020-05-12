@@ -2,8 +2,8 @@ const initialUserState = {
   username: "",
   password: "",
   isLogin: false,
-  token:"",
-  message:"",
+  token: "",
+  message: "",
 }
 
 export default function userReducer(userState = initialUserState, action) {
@@ -21,18 +21,20 @@ export default function userReducer(userState = initialUserState, action) {
     case "DO_LOGIN":
       return {
         ...userState,
-        token:action.payload,
-        isLogin: true
+        token: action.payload,
+        isLogin: true,
+        message: ""
       }
     case "DO_LOGIN_FALSE":
-      return{
+      return {
         ...userState,
-        message:"Anda belum terdaftar"
+        message: "Anda belum terdaftar"
       }
     case "DO_LOGOUT":
       return {
         ...userState,
-        isLogin: false
+        isLogin: false,
+        token: ""
       }
     default:
       return userState

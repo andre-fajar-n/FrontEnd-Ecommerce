@@ -2,12 +2,14 @@ import React, { Component, Fragment } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
+import { doLogout } from "../store/action/user"
 
 class DetailProduk extends Component {
   render() {
     return (
       <Fragment>
-        <Header />
+        <Header {...this.props} />
         <section className="container">
           <div className="row">
             <div className="col-md-5">
@@ -37,4 +39,12 @@ class DetailProduk extends Component {
   }
 }
 
-export default DetailProduk;
+const mapStateToProps = (state) => ({
+  dataUser: state.user
+})
+
+const mapDispatchToProps = {
+  doLogout
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailProduk);

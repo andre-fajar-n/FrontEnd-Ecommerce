@@ -2,13 +2,15 @@ import React, { Component, Fragment } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import IsiKeranjang from "../components/IsiKeranjang"
+import { doLogout } from "../store/action/user"
+import { connect } from "react-redux"
 
 class Keranjang extends Component {
   render() {
     const list = [1, 2, 3]
     return (
       <Fragment>
-        <Header />
+        <Header {...this.props} />
         <section className="container">
           <h3>Keranjang</h3>
           <table className="table">
@@ -58,4 +60,12 @@ class Keranjang extends Component {
   }
 }
 
-export default Keranjang;
+const mapStateToProps = (state) => ({
+  dataUser: state.user
+})
+
+const mapDispatchToProps = {
+  doLogout
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Keranjang);

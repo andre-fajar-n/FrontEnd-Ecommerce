@@ -3,6 +3,8 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import KategoriDiToko from "../components/KategoriDiToko"
 import { splitData, tampilkanHasilSplit } from "../function/function"
+import { doLogout } from "../store/action/user"
+import { connect } from "react-redux"
 
 class Toko extends Component {
   render() {
@@ -10,7 +12,7 @@ class Toko extends Component {
     const splitList = splitData(list, 3)
     return (
       <Fragment>
-        <Header />
+        <Header {...this.props} />
         <section className="container">
           <h1>Nama Toko</h1>
           <h4>Lokasi</h4>
@@ -31,4 +33,12 @@ class Toko extends Component {
   }
 }
 
-export default Toko;
+const mapStateToProps = (state) => ({
+  dataUser: state.user
+})
+
+const mapDispatchToProps = {
+  doLogout
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Toko);

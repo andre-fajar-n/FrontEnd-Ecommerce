@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "react-router-dom";
 
 const Produk = (props) => {
-  console.warn("di produk", props)
   let width = 0
   if (props.match.path === "/toko") { width = "350px" }
   else if (props.match.path === "/") { width = "300px" }

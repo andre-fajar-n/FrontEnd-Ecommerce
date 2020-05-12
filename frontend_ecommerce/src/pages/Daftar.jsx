@@ -14,10 +14,6 @@ class Daftar extends Component {
           <input type="text" name="" id="inputUsername" placeholder="username" onChange={(e) => this.props.changeInput(e)} />
         </div>
         <div className="form-daftar">
-          <span>Email</span><br />
-          <input type="email" name="" id="inputEmail" placeholder="email" onChange={(e) => this.props.changeInput(e)} />
-        </div>
-        <div className="form-daftar">
           <span>Password</span><br />
           <input type="password" name="" id="inputPassword" placeholder="password" onChange={(e) => this.props.changeInput(e)} />
         </div>
