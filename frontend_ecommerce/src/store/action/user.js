@@ -11,43 +11,48 @@ export const changeInputPassword = (event) => ({
 })
 
 export const doLogin = () => {
-  return async (dispatch, getState) => {
+  return (dispatch, getState) => {
 
     const dataUsername = getState().user.inputUsername;
 
     const dataPassword = getState().user.inputPassword;
 
-    await axios.get("http://0.0.0.0:9090/login",
+    axios.get("http://0.0.0.0:9090/login",
       {
         params: {
           username: dataUsername,
           password: dataPassword
         }
       })
-      .then(async (response) => {
-        console.warn("cek action doLogin", response)
+      .then((response) => {
         dispatch({
           type: "DO_LOGIN",
           payload: response.data.token
         })
-        // localStorage.setItem("token", response.data.token)
-        // localStorage.setItem("isLogin", true)
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.warn("cek error", error)
         dispatch({ type: "DO_LOGIN_FALSE" })
       })
+  }
+}
 
-    // if (response === undefined){
-    //   alert("username atau password salah")
-    // } else{
-    //   localStorage.setItem("token", response.data.token)
-    //   // localStorage.setItem
-    // }
+export const register = () => {
+  return (dispatch, getState) => {
+    const dataUsername = getState().user.inputUsername;
 
-    // dispatch({
-    //   type: "DO_LOGIN"
-    // })
+    const dataPassword = getState().user.inputPassword;
+
+    const bodyRequest = {
+      username: dataUsername,
+      password: dataPassword
+    }
+
+    axios.post("http://0.0.0.0:9090/user", bodyRequest)
+      .then((response) => {
+        doLogin()
+        dispatch({type:"REGISTER", payload:response.data})
+      })
   }
 }
 

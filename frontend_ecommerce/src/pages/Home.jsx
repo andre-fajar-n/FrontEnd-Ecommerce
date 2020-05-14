@@ -5,11 +5,15 @@ import Footer from "../components/Footer"
 import ListKategori from "../components/KategoriDiHome"
 import { connect } from "react-redux"
 import { doLogout } from "../store/action/user"
+import { semuaProduk } from "../store/action/produk"
 
 class Home extends Component {
+  componentDidMount = () => {
+    this.props.semuaProduk()
+  }
   render() {
     const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    const splitList = splitData(list, 4)
+    const splitList = splitData(this.props.dataProduk.list, 4)
     return (
       <Fragment>
         <Header {...this.props} />
@@ -71,11 +75,13 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  dataUser: state.user
+  dataUser: state.user,
+  dataProduk: state.produk
 })
 
 const mapDispatchToProps = {
-  doLogout
+  doLogout,
+  semuaProduk
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -4,9 +4,29 @@ import Footer from "../components/Footer"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import { doLogout } from "../store/action/user"
+import { semuaProduk } from "../store/action/produk"
 
 class DetailProduk extends Component {
+  componentDidMount = () => {
+    this.props.semuaProduk()
+  }
+
   render() {
+    let namaProduk = this.props.location.pathname
+    namaProduk = namaProduk.replace("/produk/", '')
+    namaProduk = namaProduk.replace(/-/gi, ' ')
+    const detailProduk = this.props.dataProduk.list.filter((item) => {
+      if (item.nama === namaProduk) {
+        return item.nama
+      }
+      return false
+    })
+    const produk = detailProduk.map((value) => ({
+      nama: value.nama,
+      gambar: value.gambar
+    }))
+    console.warn("cek nama produk", detailProduk)
+
     return (
       <Fragment>
         <Header {...this.props} />
@@ -16,8 +36,16 @@ class DetailProduk extends Component {
               <img src={require("../logo.svg")} alt="" />
             </div>
             <div className="col-md-7">
-              <h1>Nama Produk</h1><hr />
-              <span>Harga</span><hr />
+              <h1>
+                {detailProduk.map((value) => (
+                  <span>{value.nama}</span>
+                ))}
+              </h1><hr />
+              <span>Harga:
+                {detailProduk.map((value) => (
+                <span> {value.harga}</span>
+              ))}
+              </span><hr />
               <span>Stok</span><hr />
               <form action="">
                 <span>Jumlah: </span>
@@ -40,11 +68,13 @@ class DetailProduk extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  dataUser: state.user
+  dataUser: state.user,
+  dataProduk: state.produk
 })
 
 const mapDispatchToProps = {
-  doLogout
+  doLogout,
+  semuaProduk
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailProduk);

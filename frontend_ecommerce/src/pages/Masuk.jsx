@@ -6,11 +6,13 @@ import { connect } from "react-redux";
 class Masuk extends Component {
   postLogin = async () => {
     await this.props.doLogin();
+    console.warn("is login", this.props.dataUser.isLogin)
     if (this.props.dataUser.isLogin) {
       this.props.history.push("/");
     }
   };
   render() {
+    console.warn("cek di masuk", this.props)
     return (
       <section className="content signin">
         <form className="form-signin text-center" onSubmit={(e) => e.preventDefault()}>

@@ -36,6 +36,8 @@ export default function userReducer(userState = initialUserState, action) {
         isLogin: false,
         token: ""
       }
+    case "REGISTER":
+      return 
     default:
       return userState
   }

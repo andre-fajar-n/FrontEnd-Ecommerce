@@ -18,7 +18,7 @@ const MainRoutes = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/masuk" component={Masuk} />
           <Route exact path="/daftar" component={Daftar} />
-          <Route exact path="/detailproduk" component={DetailProduk} />
+          <Route exact path="/produk/:namaproduk" component={DetailProduk} />
           <Route exact path="/toko" component={Toko} />
           <Route exact path="/keranjang" component={Keranjang} />
         </Switch>
