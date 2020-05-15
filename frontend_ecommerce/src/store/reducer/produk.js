@@ -1,5 +1,7 @@
 const initialStateProduk = {
-  list: []
+  allProduk: [],
+  allKategori: [],
+  kategoriID: {}
 }
 
 export default function produkReducer(produkState = initialStateProduk, action) {
@@ -7,7 +9,12 @@ export default function produkReducer(produkState = initialStateProduk, action) 
     case "SEMUA_PRODUK":
       return {
         ...produkState,
-        list: action.payload
+        allProduk: action.payload
+      }
+    case "KATEGORI":
+      return {
+        ...produkState,
+        allKategori: action.payload
       }
     default:
       return produkState

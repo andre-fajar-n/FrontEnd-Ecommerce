@@ -5,15 +5,17 @@ import Footer from "../components/Footer"
 import ListKategori from "../components/KategoriDiHome"
 import { connect } from "react-redux"
 import { doLogout } from "../store/action/user"
-import { semuaProduk } from "../store/action/produk"
+import { semuaProduk, kategori } from "../store/action/produk"
 
 class Home extends Component {
   componentDidMount = () => {
     this.props.semuaProduk()
+    this.props.kategori()
   }
+
   render() {
-    const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    const splitList = splitData(this.props.dataProduk.list, 4)
+    const listKategori = this.props.dataKategori
+    const splitProduk = splitData(this.props.dataProduk, 4)
     return (
       <Fragment>
         <Header {...this.props} />
@@ -49,14 +51,14 @@ class Home extends Component {
           <div>
             <h3>Kategori</h3>
             <div className="row">
-              {list.map((value) => {
+              {listKategori.map((value) => {
                 const isiData = []
                 const lainnya = []
                 if (isiData.length < 10) { isiData.push(value) }
                 else { lainnya.push(value) }
                 return (
                   <div className="col">
-                    <ListKategori value={value} />
+                    <ListKategori namaKategori={value.tipe_produk} id={value.id} {...this.props} />
                   </div>
                 )
               })}
@@ -65,7 +67,7 @@ class Home extends Component {
           </div>
           <div>
             <h3>Produk</h3>
-            {tampilkanHasilSplit("produk", splitList, this.props)}
+            {tampilkanHasilSplit("produk", splitProduk, this.props)}
           </div>
         </section>
         <Footer />
@@ -76,12 +78,14 @@ class Home extends Component {
 
 const mapStateToProps = (state) => ({
   dataUser: state.user,
-  dataProduk: state.produk
+  dataProduk: state.produk.allProduk,
+  dataKategori: state.produk.allKategori
 })
 
 const mapDispatchToProps = {
   doLogout,
-  semuaProduk
+  semuaProduk,
+  kategori,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -9,6 +9,12 @@ const Header = (props) => {
       props.history.push("/");
     }
   };
+
+  const changeRouter = (kategori, id) => {
+    kategori = kategori.replace(/ /gi, "-")
+    props.history.replace("/kategori/" + id + "&" + kategori)
+  }
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,14 +27,12 @@ const Header = (props) => {
             <li className="nav-item dropdown li-in-navbar">
               <div className="btn-group">
                 <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Action
+                  Kategori
               </button>
                 <div className="dropdown-menu">
-                  <Link className="dropdown-item" >Action</Link>
-                  <Link className="dropdown-item" >Another action</Link>
-                  <Link className="dropdown-item" >Something else here</Link>
-                  <div className="dropdown-divider"></div>
-                  <Link className="dropdown-item" >Separated link</Link>
+                  {props.dataKategori.map((value) => (
+                    <Link onClick={() => changeRouter(value.tipe_produk, value.id)} className="dropdown-item" >{value.tipe_produk}</Link>
+                  ))}
                 </div>
               </div>
             </li>
@@ -43,7 +47,9 @@ const Header = (props) => {
           </ul>
           <ul className="navbar-nav ml-auto">
             <li className="li-in-navbar d-flex align-items-center">
-              <i className="fas fa-shopping-cart" style={{ fontSize: "25px" }}></i>
+              <Link to="/keranjang">
+                <i className="fas fa-shopping-cart" style={{ fontSize: "25px" }}></i>
+              </Link>
             </li>
             <li className="li-in-navbar">
               {props.dataUser.isLogin ? (

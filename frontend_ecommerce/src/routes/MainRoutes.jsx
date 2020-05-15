@@ -9,6 +9,7 @@ import Toko from "../pages/Toko"
 import Keranjang from "../pages/Keranjang"
 import { Provider } from "react-redux"
 import store from "../store"
+import ProdukByKategori from "../pages/ProdukByKategori"
 
 const MainRoutes = () => {
   return (
@@ -18,9 +19,10 @@ const MainRoutes = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/masuk" component={Masuk} />
           <Route exact path="/daftar" component={Daftar} />
-          <Route exact path="/produk/:namaproduk" component={DetailProduk} />
           <Route exact path="/toko" component={Toko} />
           <Route exact path="/keranjang" component={Keranjang} />
+          <Route exact path="/kategori/:kategori" component={ProdukByKategori} />
+          <Route exact path="/produk/:namaproduk" component={DetailProduk} />
         </Switch>
       </BrowserRouter>
     </Provider>

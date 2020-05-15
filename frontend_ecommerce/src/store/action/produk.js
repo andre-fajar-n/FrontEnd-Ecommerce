@@ -1,17 +1,31 @@
 import axios from "axios"
 
+const url = process.env.REACT_APP_BASE_URL
+
 export const semuaProduk = () => {
-  return async (dispatch) => {
-    await axios.get("http://0.0.0.0:9090/produk")
+  return (dispatch) => {
+    axios.get(url + "produk")
       .then((response) => {
-        console.warn("action produk", response)
         dispatch({
           type: "SEMUA_PRODUK",
           payload: response.data
         })
       })
       .catch((error) => {
-        console.warn(error)
+        console.error(error)
       })
+  }
+}
+
+export const kategori = () => {
+  return (dispatch) => {
+    axios.get(url + "kategori")
+      .then((response) => {
+        dispatch({
+          type: "KATEGORI",
+          payload: response.data
+        })
+      })
+      .catch((error) => (console.error(error)))
   }
 }

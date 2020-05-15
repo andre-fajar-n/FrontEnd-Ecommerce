@@ -5,8 +5,12 @@ import KategoriDiToko from "../components/KategoriDiToko"
 import { splitData, tampilkanHasilSplit } from "../function/function"
 import { doLogout } from "../store/action/user"
 import { connect } from "react-redux"
+import { kategori } from "../store/action/produk"
 
 class Toko extends Component {
+  componentDidMount = () => {
+    this.props.kategori()
+  }
   render() {
     const list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     const splitList = splitData(list, 3)
@@ -34,11 +38,13 @@ class Toko extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  dataUser: state.user
+  dataUser: state.user,
+  dataKategori: state.produk.allKategori
 })
 
 const mapDispatchToProps = {
-  doLogout
+  doLogout,
+  kategori
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toko);

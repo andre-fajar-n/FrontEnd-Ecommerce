@@ -17,7 +17,7 @@ export const doLogin = () => {
 
     const dataPassword = getState().user.inputPassword;
 
-    axios.get("http://0.0.0.0:9090/login",
+    axios.get(process.env.REACT_APP_BASE_URL + "login",
       {
         params: {
           username: dataUsername,
@@ -51,7 +51,7 @@ export const register = () => {
     axios.post("http://0.0.0.0:9090/user", bodyRequest)
       .then((response) => {
         doLogin()
-        dispatch({type:"REGISTER", payload:response.data})
+        dispatch({ type: "REGISTER", payload: response.data })
       })
   }
 }
