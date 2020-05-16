@@ -1,6 +1,5 @@
 import React from "react"
 import ListKategori from "../components/KategoriDiHome"
-import KategoriDiToko from "../components/KategoriDiToko"
 import Produk from "../components/Produk"
 
 export const splitData = (array, size) => {
@@ -29,10 +28,6 @@ function pilihKomponen(komponen, value, props) {
     case "list_di_home":
       return (
         <ListKategori value={value} />
-      )
-    case "list_di_toko":
-      return (
-        <KategoriDiToko value={value} />
       )
     case "produk":
       return (

@@ -9,10 +9,14 @@ const Produk = (props) => {
   else if (props.match.path === "/") { width = "250px" }
   else { width = "300px" }
 
-  const changeRouter = (namaProduk, id) => {
+  const changeRouterProduk = (namaProduk, id) => {
     namaProduk = namaProduk.replace(/ /gi, "-")
     props.history.replace("/produk/" + id + "&" + namaProduk)
-    console.warn("cek route", props)
+  }
+
+  const changeRouterToko = (namaToko) => {
+    namaToko = namaToko.replace(/ /gi, "-")
+    props.history.replace("/toko/" + namaToko)
   }
 
   return (
@@ -20,11 +24,11 @@ const Produk = (props) => {
       <div className="card">
         <img src={"http://0.0.0.0:9090/img/" + props.value.gambar} className="card-img-top" alt="..." />
         <div className="card-body">
-          <Link onClick={() => changeRouter(`${props.value.nama}`, `${props.value.id}`)}>
+          <Link onClick={() => changeRouterProduk(`${props.value.nama}`, `${props.value.id}`)}>
             <h5 className="card-title">{props.value.nama}</h5>
           </Link>
-          <Link to="/toko">
-            <p className="card-text">ID Toko: {props.value.seller_id}</p>
+          <Link onClick={() => changeRouterToko(`${props.value.seller.nama}`)}>
+            <p className="card-text">{props.value.seller.nama}</p>
           </Link>
           <p className="card-text">Lokasi</p>
           <p className="card-text">{currencyFormatter.format(props.value.harga, { code: 'IDR' })}</p>

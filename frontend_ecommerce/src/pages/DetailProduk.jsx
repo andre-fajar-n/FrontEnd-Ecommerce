@@ -5,26 +5,30 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import { doLogout } from "../store/action/user"
 import { semuaProduk, kategori } from "../store/action/produk"
+import { changeInputQty, postKeranjang } from "../store/action/keranjang"
 
 var currencyFormatter = require('currency-formatter');
 
 class DetailProduk extends Component {
   componentDidMount = () => {
     this.props.kategori()
+    this.props.semuaProduk()
+  }
+
+  changeRouterToko = (namaToko, id) => {
+    namaToko = namaToko.replace(/ /gi, "-")
+    this.props.history.replace("/toko/" + namaToko)
   }
 
   render() {
     let namaProduk = this.props.location.pathname
     namaProduk = namaProduk.replace("/produk/", '')
     namaProduk = namaProduk.split("&")
+    const produkID = namaProduk[0]
     namaProduk = namaProduk[1].replace(/-/gi, ' ')
-    const detailProduk = this.props.dataProduk.allProduk.filter((item) => {
-      if (item.nama === namaProduk) {
-        return item.nama
-      }
-      return false
-    })
+    const detailProduk = this.props.dataProduk.filter((item) => (item.nama === namaProduk && item.id == produkID))
 
+    console.warn("cek detail produk", this.props)
     return (
       <Fragment>
         <Header {...this.props} />
@@ -44,8 +48,13 @@ class DetailProduk extends Component {
                 <span>Stok</span><hr />
                 <form action="">
                   <span>Jumlah: </span>
-                  <input type="number" id="jumlahProduk" name="jumlahProduk" min="1" defaultValue="1"></input><br />
-                  <button className="beli-keranjang btn btn-danger my-2 my-sm-0">Tambah Ke Keranjang</button>
+                  <input onChange={(event) => this.props.changeInputQty(event)}
+                    type="number" id="jumlahProduk"
+                    name="jumlahProduk"
+                    min="1"
+                    defaultValue="1">
+                  </input><br />
+                  <button onClick={() => this.props.postKeranjang(value.id)} className="beli-keranjang btn btn-danger my-2 my-sm-0">Tambah Ke Keranjang</button>
                   <Link to="/keranjang">
                     <button className="beli-keranjang btn btn-danger my-2 my-sm-0">Beli Sekarang</button>
                   </Link>
@@ -54,8 +63,8 @@ class DetailProduk extends Component {
                 <p>{value.deskripsi}</p>
               </div>
             </div>
-            <h1><Link to="/toko">Nama Toko</Link></h1>
-            <h2>Lokasi Toko</h2>
+            <h1><Link onClick={() => this.changeRouterToko(`${value.seller.nama}`)}>{value.seller.nama}</Link></h1>
+            <h2>{value.seller.alamat}</h2>
           </section>
         ))}
         <Footer />
@@ -66,14 +75,17 @@ class DetailProduk extends Component {
 
 const mapStateToProps = (state) => ({
   dataUser: state.user,
-  dataProduk: state.produk,
-  dataKategori: state.produk.allKategori
+  dataProduk: state.produk.allProduk,
+  dataKategori: state.produk.allKategori,
+  dataKeranjang: state.keranjang
 })
 
 const mapDispatchToProps = {
   doLogout,
   semuaProduk,
-  kategori
+  kategori,
+  changeInputQty,
+  postKeranjang
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailProduk);

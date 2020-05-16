@@ -25,18 +25,18 @@ class Home extends Component {
             <ol className="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              {/* <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> */}
             </ol>
             <div className="carousel-inner">
               <div className="carousel-item active">
-                <img src={require("../logo.svg")} className="d-block w-100 logo1" alt="..." />
+                <img src={require("../images/frank-wang-ogxlyCA1BQc-unsplash.jpg")} className="d-block logo" alt="..." />
               </div>
               <div className="carousel-item">
-                <img src={require("../logo.svg")} className="d-block w-100 logo2" alt="..." />
+                <img src={require("../images/harrison-broadbent-VOz0gV9HC0I-unsplash.jpg")} className="d-block logo" alt="..." />
               </div>
-              <div className="carousel-item">
+              {/* <div className="carousel-item">
                 <img src={require("../logo.svg")} className="d-block w-100 logo3" alt="..." />
-              </div>
+              </div> */}
             </div>
             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
