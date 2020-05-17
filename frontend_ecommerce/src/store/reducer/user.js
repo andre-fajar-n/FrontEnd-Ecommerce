@@ -4,6 +4,7 @@ const initialUserState = {
   isLogin: false,
   token: "",
   message: "",
+  biodata:{}
 }
 
 export default function userReducer(userState = initialUserState, action) {
@@ -36,8 +37,11 @@ export default function userReducer(userState = initialUserState, action) {
         isLogin: false,
         token: ""
       }
-    case "REGISTER":
-      return 
+      case "GET_BIOADATA_USER":
+        return{
+          ...userState,
+          biodata:action.payload
+        }
     default:
       return userState
   }

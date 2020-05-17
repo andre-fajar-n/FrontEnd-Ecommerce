@@ -51,6 +51,11 @@ const Header = (props) => {
                 <i className="fas fa-shopping-cart" style={{ fontSize: "25px" }}></i>
               </Link>
             </li>
+            <li className="li-in-navbar d-flex align-items-center">
+              <Link to="/toko">
+                <i class="fas fa-store" style={{ fontSize: "25px" }}></i>
+              </Link>
+            </li>
             <li className="li-in-navbar">
               {props.dataUser.isLogin ? (
                 <Link to="/profil">

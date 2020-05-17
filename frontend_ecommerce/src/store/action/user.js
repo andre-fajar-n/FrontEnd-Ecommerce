@@ -1,5 +1,7 @@
 import axios from "axios"
 
+const url = process.env.REACT_APP_BASE_URL
+
 export const changeInputUsername = (event) => ({
   type: "CHANGE_INPUT_USERNAME",
   payload: event
@@ -17,7 +19,7 @@ export const doLogin = () => {
 
     const dataPassword = getState().user.inputPassword;
 
-    axios.get(process.env.REACT_APP_BASE_URL + "login",
+    axios.get(url + "login",
       {
         params: {
           username: dataUsername,
@@ -48,7 +50,7 @@ export const register = () => {
       password: dataPassword
     }
 
-    axios.post("http://0.0.0.0:9090/user", bodyRequest)
+    axios.post(url + "user", bodyRequest)
       .then((response) => {
         doLogin()
         dispatch({ type: "REGISTER", payload: response.data })
@@ -57,3 +59,21 @@ export const register = () => {
 }
 
 export const doLogout = () => ({ type: "DO_LOGOUT" })
+
+export const getUser = () => {
+  return async (dispatch, getState) => {
+    const response = await axios({
+      method: "GET",
+      url: `${url}pembeli`,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json; charset=utf-8",
+        Authorization: `Bearer ${getState().user.token}`
+      }
+    })
+    dispatch({
+      type: "GET_BIOADATA_USER",
+      payload: response.data
+    })
+  }
+}
