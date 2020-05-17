@@ -27,17 +27,29 @@ export const changeInputQty = (event) => ({
 })
 
 export const postKeranjang = (product_id) => {
-  return (getState) => {
-    let bodyRequest = {
-      product_id,
-      quantity: getState().keranjang.inputQty
-    }
-    bodyRequest = JSON.stringify(bodyRequest)
-    axios.post(url + "keranjang", bodyRequest, {
-      headers: {
-        'Authorization': 'Bearer ' + getState().user.token
+  return (dispatch, getState) => {
+    axios({
+      method: "POST",
+      url: url + "keranjang",
+      headers: { Authorization: `Bearer ${getState().user.token}` },
+      params: {
+        product_id: product_id,
+        quantity: getState().keranjang.inputQty
       }
     })
-      .catch((error) => (console.error(error)))
+  }
+}
+
+export const deleteKeranjang = (id) => {
+  return (dispatch, getState) => {
+    axios({
+      method: "DELETE",
+      url: `${url}keranjang/${id}`,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json; charset=utf-8",
+        Authorization: `Bearer ${getState().user.token}`
+      }
+    })
   }
 }

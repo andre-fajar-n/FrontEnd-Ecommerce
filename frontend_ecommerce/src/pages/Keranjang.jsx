@@ -5,7 +5,7 @@ import IsiKeranjang from "../components/IsiKeranjang"
 import { doLogout } from "../store/action/user"
 import { connect } from "react-redux"
 import { kategori } from "../store/action/produk"
-import { getKeranjang } from "../store/action/keranjang"
+import { getKeranjang, deleteKeranjang } from "../store/action/keranjang"
 
 class Keranjang extends Component {
   componentDidMount = () => {
@@ -15,7 +15,7 @@ class Keranjang extends Component {
 
   render() {
     const keranjang = this.props.dataKeranjang
-    const list = [1, 2, 3]
+    console.warn("cek keranjang", keranjang)
     return (
       <Fragment>
         <Header {...this.props} />
@@ -34,13 +34,18 @@ class Keranjang extends Component {
             </thead>
             {keranjang.map((item) => (
               <tbody>
+                <tr>
+                  <th colSpan="5">{item.cart.seller_id.nama}</th>
+                </tr>
                 {item.transaction_detail.map((value, index) => (
                   <IsiKeranjang
+                    id={value.id}
                     index={index + 1}
                     nama={value.product_id.nama}
-                    harga={value.harga}
+                    harga={value.product_id.harga}
                     jumlah={value.kuantitas}
-                    total={value.harga * value.kuantitas}
+                    total={value.harga}
+                    deleteKeranjang={this.props.deleteKeranjang}
                   />
                 ))}
               </tbody>
@@ -85,7 +90,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   doLogout,
   kategori,
-  getKeranjang
+  getKeranjang,
+  deleteKeranjang
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Keranjang);

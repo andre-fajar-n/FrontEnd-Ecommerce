@@ -46,19 +46,51 @@ class DetailProduk extends Component {
                 <span> {currencyFormatter.format(value.harga, { code: 'IDR' })}</span>
                 </span><hr />
                 <span>Stok</span><hr />
-                <form action="">
-                  <span>Jumlah: </span>
-                  <input onChange={(event) => this.props.changeInputQty(event)}
+                {/* <form action=""> */}
+                <span>Jumlah: </span>
+                {/* <div className="center">
+                    <div className="input-group">
+                      <span className="input-group-btn">
+                        <button type="button" className="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                          <span className="glyphicon glyphicon-minus"></span>
+                        </button>
+                      </span>
+                      <input type="text" name="quant[1]" className="form-control input-number" value="1" min="1" max="10" />
+                      <span className="input-group-btn">
+                        <button type="button" className="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                          <span className="glyphicon glyphicon-plus"></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div> */}
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+                        </div>
+                        <input type="number" id="qty_input" class="form-control form-control-sm" value="1" min="1" />
+                        <div class="input-group-prepend">
+                          <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                  </div>
+                </div>
+                {/* <input onChange={(event) => this.props.changeInputQty(event)}
                     type="number" id="jumlahProduk"
                     name="jumlahProduk"
                     min="1"
                     defaultValue="1">
-                  </input><br />
-                  <button onClick={() => this.props.postKeranjang(value.id)} className="beli-keranjang btn btn-danger my-2 my-sm-0">Tambah Ke Keranjang</button>
-                  <Link to="/keranjang">
-                    <button className="beli-keranjang btn btn-danger my-2 my-sm-0">Beli Sekarang</button>
-                  </Link>
-                </form><hr />
+                  </input><br /> */}
+                <button onClick={() => this.props.postKeranjang(value.id)} className="beli-keranjang btn btn-danger my-2 my-sm-0">Tambah Ke Keranjang</button>
+                <Link to="/keranjang">
+                  <button onClick={() => this.props.postKeranjang(value.id)} className="beli-keranjang btn btn-danger my-2 my-sm-0">Beli Sekarang</button>
+                </Link>
+                {/* </form><hr /> */}
                 <p>Deskripsi Produk:</p>
                 <p>{value.deskripsi}</p>
               </div>
