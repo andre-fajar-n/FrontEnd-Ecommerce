@@ -6,6 +6,7 @@ import { doLogout } from "../store/action/user"
 import { connect } from "react-redux"
 import { kategori } from "../store/action/produk"
 import { getKeranjang, deleteKeranjang } from "../store/action/keranjang"
+import { Link } from "react-router-dom"
 
 class Keranjang extends Component {
   componentDidMount = () => {
@@ -15,7 +16,6 @@ class Keranjang extends Component {
 
   render() {
     const keranjang = this.props.dataKeranjang
-    console.warn("cek keranjang", keranjang)
     return (
       <Fragment>
         <Header {...this.props} />
@@ -52,28 +52,9 @@ class Keranjang extends Component {
             ))}
           </table>
           <br />
-          <h3>Detail Pengiriman</h3>
-          <hr />
-          <table>
-            <tbody>
-              <tr>
-                <th>Nama Penerima</th>
-                <th>Andre Fajar Nugroho</th>
-              </tr>
-              <tr>
-                <th>Alamat</th>
-                <th>Jalan Blitar no. 20, Ngunut, Tulungagung, Jawa Timur</th>
-              </tr>
-              <tr>
-                <th>Metode Pembayaran</th>
-                <th>Transfer/OVO</th>
-              </tr>
-              <tr>
-                <th>Kurir</th>
-                <th>JNE/Tiki/J&T</th>
-              </tr>
-            </tbody>
-          </table>
+          <Link to="/checkout">
+            <button className="btn btn-danger my-2 my-sm-0">Checkout</button>
+          </Link>
         </section>
         <Footer />
       </Fragment>

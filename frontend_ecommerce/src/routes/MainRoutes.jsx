@@ -11,6 +11,7 @@ import Keranjang from "../pages/Keranjang"
 import { Provider } from "react-redux"
 import store from "../store"
 import ProdukByKategori from "../pages/ProdukByKategori"
+import Checkout from "../pages/Checkout"
 
 const MainRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const MainRoutes = () => {
           <Route exact path="/masuk" component={Masuk} />
           <Route exact path="/daftar" component={Daftar} />
           <Route exact path="/keranjang" component={Keranjang} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/toko/:namaToko" component={Toko} />
           <Route exact path="/toko/:namaToko/:kategori" component={Toko} />
           <Route exact path="/kategori/:kategori" component={ProdukByKategori} />

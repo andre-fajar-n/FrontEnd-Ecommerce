@@ -13,7 +13,7 @@ class Masuk extends Component {
   render() {
     console.warn("cek di masuk", this.props)
     return (
-      <section className="content signin">
+      <div className="content signin m-0">
         <form className="form-signin text-center" onSubmit={(e) => e.preventDefault()}>
           <Link to="/">
             <img src={require("../logo.svg")} alt="" className="mb-4" width="72" height="72" />
@@ -42,7 +42,7 @@ class Masuk extends Component {
               )}
           </div>
         </form>
-      </section>
+      </div>
     )
   }
 }

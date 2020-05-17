@@ -53,3 +53,17 @@ export const deleteKeranjang = (id) => {
     })
   }
 }
+
+export const checkout = () => {
+  return (dispatch, getState) => {
+    axios({
+      method: "POST",
+      url: `${url}checkout`,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json; charset=utf-8",
+        Authorization: `Bearer ${getState().user.token}`
+      }
+    })
+  }
+}
