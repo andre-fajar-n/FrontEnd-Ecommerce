@@ -4,7 +4,7 @@ import Footer from "../components/Footer"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import { doLogout } from "../store/action/user"
-import { semuaProduk, kategori } from "../store/action/produk"
+import { getSemuaProduk, kategori } from "../store/action/produk"
 import { changeInputQty, postKeranjang } from "../store/action/keranjang"
 
 var currencyFormatter = require('currency-formatter');
@@ -12,7 +12,7 @@ var currencyFormatter = require('currency-formatter');
 class DetailProduk extends Component {
   componentDidMount = () => {
     this.props.kategori()
-    this.props.semuaProduk()
+    this.props.getSemuaProduk()
   }
 
   changeRouterToko = (namaToko, id) => {
@@ -63,7 +63,7 @@ class DetailProduk extends Component {
                       </span>
                     </div>
                   </div> */}
-                <div class="container">
+                {/* <div class="container">
                   <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4 col-sm-offset-4">
@@ -79,13 +79,13 @@ class DetailProduk extends Component {
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
-                </div>
-                {/* <input onChange={(event) => this.props.changeInputQty(event)}
-                    type="number" id="jumlahProduk"
-                    name="jumlahProduk"
-                    min="1"
-                    defaultValue="1">
-                  </input><br /> */}
+                </div> */}
+                <input onChange={(event) => this.props.changeInputQty(event)}
+                  type="number" id="jumlahProduk"
+                  name="jumlahProduk"
+                  min="1"
+                  defaultValue="1">
+                </input><br />
                 <button onClick={() => this.props.postKeranjang(value.id)} className="beli-keranjang btn btn-danger my-2 my-sm-0">Tambah Ke Keranjang</button>
                 <Link to="/keranjang">
                   <button onClick={() => this.props.postKeranjang(value.id)} className="beli-keranjang btn btn-danger my-2 my-sm-0">Beli Sekarang</button>
@@ -114,7 +114,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   doLogout,
-  semuaProduk,
+  getSemuaProduk,
   kategori,
   changeInputQty,
   postKeranjang

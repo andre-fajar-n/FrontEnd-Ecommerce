@@ -5,17 +5,18 @@ import Footer from "../components/Footer"
 import ListKategori from "../components/KategoriDiHome"
 import { connect } from "react-redux"
 import { doLogout } from "../store/action/user"
-import { semuaProduk, kategori } from "../store/action/produk"
+import { getSemuaProduk, kategori } from "../store/action/produk"
 
 class Home extends Component {
   componentDidMount = () => {
-    this.props.semuaProduk()
+    this.props.getSemuaProduk()
     this.props.kategori()
   }
 
   render() {
     const listKategori = this.props.dataKategori
-    const splitProduk = splitData(this.props.dataProduk, 4)
+    const split4 = this.props.dataProduk.slice(0, 4)
+    const splitProduk = splitData(split4, 4)
     return (
       <Fragment>
         <Header {...this.props} />
@@ -51,22 +52,15 @@ class Home extends Component {
           <div>
             <h3>Kategori</h3>
             <div className="row">
-              {listKategori.map((value) => {
-                const isiData = []
-                const lainnya = []
-                if (isiData.length < 10) { isiData.push(value) }
-                else { lainnya.push(value) }
-                return (
-                  <div className="col">
-                    <ListKategori namaKategori={value.tipe_produk} id={value.id} {...this.props} />
-                  </div>
-                )
-              })}
+              {listKategori.map((value) => (
+                <div className="col">
+                  <ListKategori namaKategori={value.tipe_produk} id={value.id} {...this.props} />
+                </div>
+              ))}
             </div>
-            {/* {tampilkanHasilSplit("list_di_home", splitList)} */}
           </div>
           <div>
-            <h3>Produk</h3>
+            <h3>Produk Terbaru</h3>
             {tampilkanHasilSplit("produk", splitProduk, this.props)}
           </div>
         </section>
@@ -84,7 +78,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   doLogout,
-  semuaProduk,
+  getSemuaProduk,
   kategori,
 }
 

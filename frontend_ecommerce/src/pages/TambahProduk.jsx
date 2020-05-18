@@ -3,7 +3,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import { doLogout, getUser } from "../store/action/user"
 import { connect } from "react-redux"
-import { kategori } from "../store/action/produk"
+import { kategori, inputProduk, tambahProduk } from "../store/action/produk"
 import { Link } from "react-router-dom"
 
 class TambahProduk extends Component {
@@ -22,7 +22,7 @@ class TambahProduk extends Component {
             <div class="card-header">
               <ul class="nav nav-pills card-header-pills">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Active</a>
+                  <a class="nav-link active" href="#">Tambah Produk</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Link</a>
@@ -33,20 +33,72 @@ class TambahProduk extends Component {
               </ul>
             </div>
             <div class="card-body">
-              <form>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <form className="form-signin text-center" onSubmit={(e) => e.preventDefault()}>
+                <div>
+                  <span>Nama Produk</span><br />
+                  <input type="text"
+                    name="namaProduk" id="namaProduk"
+                    placeholder="namaProduk"
+                    autoFocus
+                    onChange={(e) => this.props.inputProduk(e)}
+                  />
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" />
+                <div>
+                  <span>Kategori</span><br />
+                  <input type="text"
+                    name="kategori" id="kategori"
+                    placeholder="kategori"
+                    onChange={(e) => this.props.inputProduk(e)}
+                  />
                 </div>
-                <div class="form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div>
+                  <span>Harga</span><br />
+                  <input type="number"
+                    name="harga"
+                    id="harga"
+                    placeholder="harga"
+                    onChange={(e) => this.props.inputProduk(e)}
+                    defaultValue="0"
+                    step="100"
+                  />
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div>
+                  <span>Stok</span><br />
+                  <input type="number"
+                    name="stok"
+                    id="stok"
+                    placeholder="stok"
+                    onChange={(e) => this.props.inputProduk(e)}
+                    defaultValue="1"
+                  />
+                </div>
+                <div>
+                  <span>Berat</span><br />
+                  <input type="number"
+                    name="berat"
+                    id="berat"
+                    placeholder="berat (dalam gram)"
+                    onChange={(e) => this.props.inputProduk(e)}
+                    defaultValue="1"
+                  />
+                </div>
+                <div>
+                  <span>Deskripsi</span><br />
+                  <textarea type="text"
+                    name="deskripsi" id="deskripsi"
+                    placeholder="deskripsi"
+                    onChange={(e) => this.props.inputProduk(e)}
+                  />
+                </div>
+                <div>
+                  <span>Gambar</span><br />
+                  <input type="file"
+                    name="gambar" id="gambar"
+                    placeholder="gambar"
+                    onChange={(e) => this.props.inputProduk(e)}
+                  />
+                </div>
+                <button className="btn btn-lg btn-danger" type="submit" onClick={() => this.props.tambahProduk()}>Submit</button><br />
               </form>
             </div>
           </div>
@@ -65,7 +117,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   doLogout,
   kategori,
-  getUser
+  getUser,
+  inputProduk,
+  tambahProduk
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TambahProduk);

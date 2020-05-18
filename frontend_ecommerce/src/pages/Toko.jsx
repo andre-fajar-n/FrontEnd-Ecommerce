@@ -4,13 +4,13 @@ import Footer from "../components/Footer"
 import { splitData, tampilkanHasilSplit } from "../function/function"
 import { doLogout } from "../store/action/user"
 import { connect } from "react-redux"
-import { kategori, semuaProduk } from "../store/action/produk"
+import { kategori, getSemuaProduk } from "../store/action/produk"
 import { Link } from "react-router-dom"
 
 class Toko extends Component {
   componentDidMount = () => {
     this.props.kategori()
-    this.props.semuaProduk()
+    this.props.getSemuaProduk()
   }
 
   changeRouterKategori = (namaKategori) => {
@@ -70,7 +70,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   doLogout,
   kategori,
-  semuaProduk
+  getSemuaProduk
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toko);

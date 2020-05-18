@@ -16,6 +16,11 @@ export default function produkReducer(produkState = initialStateProduk, action) 
         ...produkState,
         allKategori: action.payload
       }
+    case "INPUT_PRODUK":
+      return {
+        ...produkState,
+        [action.payload.target.name]: action.payload.target.value
+      }
     default:
       return produkState
   }

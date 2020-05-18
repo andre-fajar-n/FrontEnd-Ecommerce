@@ -4,12 +4,12 @@ import { splitData, tampilkanHasilSplit } from "../function/function"
 import Footer from "../components/Footer"
 import { connect } from "react-redux"
 import { doLogout } from "../store/action/user"
-import { semuaProduk, kategori } from "../store/action/produk"
+import { getSemuaProduk, kategori } from "../store/action/produk"
 
 class ProdukByKategori extends Component {
   componentDidMount = () => {
     this.props.kategori()
-    this.props.semuaProduk()
+    this.props.getSemuaProduk()
   }
 
   render() {
@@ -46,7 +46,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   doLogout,
-  semuaProduk,
+  getSemuaProduk,
   kategori
 }
 
