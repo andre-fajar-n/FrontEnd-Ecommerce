@@ -25,8 +25,7 @@ class DetailProduk extends Component {
     namaProduk = namaProduk.replace("/produk/", '')
     namaProduk = namaProduk.split("&")
     const produkID = namaProduk[0]
-    namaProduk = namaProduk[1].replace(/-/gi, ' ')
-    const detailProduk = this.props.dataProduk.filter((item) => (item.nama === namaProduk && item.id == produkID))
+    const detailProduk = this.props.dataProduk.filter((item) => (item.id == produkID))
 
     console.warn("cek detail produk", this.props)
     return (
@@ -63,21 +62,21 @@ class DetailProduk extends Component {
                       </span>
                     </div>
                   </div> */}
-                {/* <div class="container">
-                  <div class="row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4 col-sm-offset-4">
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+                {/* <div className="container">
+                  <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-4 col-sm-offset-4">
+                      <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                          <button className="btn btn-dark btn-sm" id="minus-btn"><i className="fa fa-minus"></i></button>
                         </div>
-                        <input type="number" id="qty_input" class="form-control form-control-sm" value="1" min="1" />
-                        <div class="input-group-prepend">
-                          <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
+                        <input type="number" id="qty_input" className="form-control form-control-sm" value="1" min="1" />
+                        <div className="input-group-prepend">
+                          <button className="btn btn-dark btn-sm" id="plus-btn"><i className="fa fa-plus"></i></button>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div className="col-sm-4"></div>
                   </div>
                 </div> */}
                 <input onChange={(event) => this.props.changeInputQty(event)}

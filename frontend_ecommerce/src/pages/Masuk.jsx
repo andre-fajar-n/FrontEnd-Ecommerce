@@ -6,12 +6,11 @@ import { connect } from "react-redux";
 class Masuk extends Component {
   postLogin = async () => {
     await this.props.doLogin();
-    if (this.props.dataUser.isLogin) {
+    if (this.props.dataUser.status_internal) {
       this.props.history.push("/");
     }
   };
   render() {
-    console.warn("cek di masuk", this.props)
     return (
       <div className="content signin m-0">
         <form className="form-signin text-center" onSubmit={(e) => e.preventDefault()}>
@@ -35,11 +34,6 @@ class Masuk extends Component {
           <button className="btn btn-lg btn-danger" type="submit" onClick={() => this.postLogin()}>Masuk</button><br />
           <span>Belum punya akun?<Link to="/daftar"> Daftar </Link>disini!</span>
           <div><br />
-            {this.props.dataUser.message === '' ? (
-              <div></div>
-            ) : (
-                <span>{this.props.dataUser.message}</span>
-              )}
           </div>
         </form>
       </div>

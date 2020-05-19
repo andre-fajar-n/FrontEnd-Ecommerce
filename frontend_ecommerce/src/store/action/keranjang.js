@@ -3,21 +3,30 @@ import axios from "axios"
 const url = process.env.REACT_APP_BASE_URL
 
 export const getKeranjang = () => {
-  return (dispatch, getState) => {
-    axios.get(url + "keranjang", {
-      headers: {
-        'Authorization': 'Bearer ' + getState().user.token
-      }
-    })
-      .then((response) => {
-        dispatch({
-          type: "GET_KERANJANG",
-          payload: response.data
-        })
+  return async (dispatch, getState) => {
+    dispatch({ type: "IS_LOADING" })
+
+    try {
+      const response = await axios.get(url + "keranjang", {
+        headers: {
+          'Authorization': 'Bearer ' + getState().user.token
+        }
       })
-      .catch((error) => {
-        console.error(error)
+      dispatch({
+        type: "GET_KERANJANG",
+        payload: response.data
       })
+    } catch (error) {
+      dispatch({
+        type: "GET_KERANJANG",
+        payload: []
+      })
+    }
+    // .then((response) => {
+    // })
+    // .catch((error) => {
+    //   console.error(error)
+    // })
   }
 }
 
@@ -41,8 +50,8 @@ export const postKeranjang = (product_id) => {
 }
 
 export const deleteKeranjang = (id) => {
-  return (dispatch, getState) => {
-    axios({
+  return async (dispatch, getState) => {
+    await axios({
       method: "DELETE",
       url: `${url}keranjang/${id}`,
       headers: {

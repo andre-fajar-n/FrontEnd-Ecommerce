@@ -13,24 +13,35 @@ export const changeInputPassword = (event) => ({
 })
 
 export const doLogin = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
 
     const dataUsername = getState().user.inputUsername;
 
     const dataPassword = getState().user.inputPassword;
 
-    axios.get(url + "login",
+    await axios.get(url + "login",
       {
         params: {
           username: dataUsername,
           password: dataPassword
         }
       })
-      .then((response) => {
+      .then(async (response) => {
         dispatch({
           type: "DO_LOGIN",
           payload: response.data.token
         })
+        await axios.get(url + "user", {
+          headers: {
+            'Authorization': 'Bearer ' + getState().user.token
+          }
+        })
+          .then((responseUser) => {
+            dispatch({
+              type: "GET_USER",
+              payload: responseUser.data
+            })
+          })
       })
       .catch((error) => {
         console.warn("cek error", error)
@@ -40,7 +51,7 @@ export const doLogin = () => {
 }
 
 export const register = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const dataUsername = getState().user.inputUsername;
 
     const dataPassword = getState().user.inputPassword;
@@ -50,9 +61,8 @@ export const register = () => {
       password: dataPassword
     }
 
-    axios.post(url + "user", bodyRequest)
+    await axios.post(url + "user", bodyRequest)
       .then((response) => {
-        doLogin()
         dispatch({ type: "REGISTER", payload: response.data })
       })
   }
@@ -62,18 +72,23 @@ export const doLogout = () => ({ type: "DO_LOGOUT" })
 
 export const getUser = () => {
   return async (dispatch, getState) => {
-    const response = await axios({
-      method: "GET",
-      url: `${url}pembeli`,
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json; charset=utf-8",
-        Authorization: `Bearer ${getState().user.token}`
-      }
-    })
-    dispatch({
-      type: "GET_BIOADATA_USER",
-      payload: response.data
-    })
+    try {
+      const response = await axios({
+        method: "GET",
+        url: `${url}pembeli`,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${getState().user.token}`
+        }
+      })
+      dispatch({
+        type: "GET_BIOADATA_USER",
+        payload: response.data
+      })
+    } catch (error) {
+      alert("Silahkan lengkapi Biodata Anda")
+      console.warn("cek error", error)
+    }
   }
 }

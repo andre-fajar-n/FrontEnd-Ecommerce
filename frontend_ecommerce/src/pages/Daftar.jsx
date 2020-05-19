@@ -4,15 +4,15 @@ import { changeInputUsername, changeInputPassword, register } from "../store/act
 import { connect } from "react-redux";
 
 class Daftar extends Component {
-  postRegister = ()=>{
-    this.props.register()
-    if(this.props.dataUser.isLogin){
-      this.props.history.push("/masuk")
+  postRegister = async () => {
+    await this.props.register()
+    console.warn("cek daftar", this.props.dataUser.status_internal)
+    if (this.props.dataUser.status_internal) {
+      this.props.history.push("/profil")
     }
   }
 
   render() {
-    console.warn("cek di daftar", this.props)
     return (
       <form className="form-signin text-center" onSubmit={(e) => e.preventDefault()}>
         <Link to="/">
@@ -27,10 +27,6 @@ class Daftar extends Component {
           <span>Password</span><br />
           <input type="password" name="" id="inputPassword" placeholder="password" onChange={(e) => this.props.changeInputPassword(e)} />
         </div>
-        {/* <div className="form-daftar">
-          <span>Confirm Password</span><br />
-          <input type="password" name="" id="inputConfirmPassword" placeholder="confirm password" onChange={(e) => this.props.changeInput(e)} />
-        </div> */}
         <div className="form-daftar">
           <button className="btn btn-lg btn-danger" type="submit" onClick={() => this.postRegister()}>Daftar</button><br />
           <span>Sudah punya akun? <Link to="/masuk">Silahkan Masuk</Link></span>

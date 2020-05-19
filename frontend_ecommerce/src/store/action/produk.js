@@ -4,6 +4,8 @@ const url = process.env.REACT_APP_BASE_URL
 
 export const getSemuaProduk = () => {
   return (dispatch) => {
+    dispatch({ type: "IS_LOADING" })
+
     axios.get(url + "produk")
       .then((response) => {
         dispatch({
@@ -19,6 +21,8 @@ export const getSemuaProduk = () => {
 
 export const kategori = () => {
   return (dispatch) => {
+    dispatch({ type: "IS_LOADING" })
+
     axios.get(url + "kategori")
       .then((response) => {
         dispatch({
@@ -36,29 +40,36 @@ export const inputProduk = (event) => ({
 })
 
 export const tambahProduk = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const inputData = new FormData();
-    inputData.set('nama', getState().produk.namaProduk)
-    inputData.set('kategori', getState().produk.kategori)
-    inputData.set('harga', getState().produk.harga)
-    inputData.set('stok', getState().produk.stok)
-    inputData.set('berat', getState().produk.berat)
-    inputData.set('deskripsi', getState().produk.deskripsi)
+    inputData.append('nama', getState().produk.namaProduk)
+    inputData.append('harga', getState().produk.harga)
+    inputData.append('berat', getState().produk.berat)
+    inputData.append('deskripsi', getState().produk.deskripsi)
+    inputData.append('kategori', getState().produk.kategori)
+    inputData.append('stok', getState().produk.stok)
 
-    gambar = getState().produk.gambar.replace("C:\\\\fakepath\\\\", "")
-    inputData.append('gambar', gambar)
-    console.warn("cek action produk", inputData)
+    gambar = getState().produk.gambar.replace("C:\\fakepath\\", "")
+    console.warn("cek action produk", gambar)
+    // inputData.append('gambar', gambar)
 
-    axios({
-      method: "POST",
-      url: `${url}produk/penjual`,
-      data: inputData,
+    const response = await axios.post(url + "produk/penjual", inputData, {
       headers: {
         'Content-Type': 'multipart/form-data',
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json; charset=utf-8",
         Authorization: `Bearer ${getState().user.token}`
       }
     })
+    console.warn("cek response post produk", response)
+    // axios({
+    //   method: "POST",
+    //   url: `${url}produk/penjual`,
+    //   data: inputData,
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data',
+    //     "Content-Type": "application/json; charset=utf-8",
+    //     Accept: "application/json; charset=utf-8",
+    //     Authorization: `Bearer ${getState().user.token}`
+    //   }
+    // })
   }
 }

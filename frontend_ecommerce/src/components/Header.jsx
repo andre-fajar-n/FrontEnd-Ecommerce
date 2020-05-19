@@ -31,7 +31,7 @@ const Header = (props) => {
               </button>
                 <div className="dropdown-menu">
                   {props.dataKategori.map((value) => (
-                    <Link onClick={() => changeRouter(value.tipe_produk, value.id)} className="dropdown-item" >{value.tipe_produk}</Link>
+                    <Link to='' key={value.id} onClick={() => changeRouter(value.tipe_produk, value.id)} className="dropdown-item" >{value.tipe_produk}</Link>
                   ))}
                 </div>
               </div>
@@ -53,11 +53,11 @@ const Header = (props) => {
             </li>
             <li className="li-in-navbar d-flex align-items-center">
               <Link to="/toko">
-                <i class="fas fa-store" style={{ fontSize: "25px" }}></i>
+                <i className="fas fa-store" style={{ fontSize: "25px" }}></i>
               </Link>
             </li>
             <li className="li-in-navbar">
-              {props.dataUser.isLogin ? (
+              {props.dataUser.status_internal ? (
                 <Link to="/profil">
                   <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Profil</button>
                 </Link>
@@ -68,7 +68,7 @@ const Header = (props) => {
                 )}
             </li>
             <li className="li-in-navbar">
-              {props.dataUser.isLogin ? (
+              {props.dataUser.status_internal ? (
                 <Link onClick={() => postSignout()}>
                   <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Keluar</button>
                 </Link>
