@@ -22,7 +22,7 @@ const Produk = (props) => {
   return (
     <div className="card-deck" style={{ margin: "5px 0", width: `${width}` }}>
       <div className="card">
-        <img src={"http://0.0.0.0:9090/img/" + props.value.gambar} className="card-img-top" alt="..." />
+        <img src={process.env.REACT_APP_BASE_URL + "img/" + props.value.gambar} className="card-img-top" alt={props.value.nama} />
         <div className="card-body">
           <Link onClick={() => changeRouterProduk(`${props.value.nama}`, `${props.value.id}`)}>
             <h5 className="card-title">{props.value.nama}</h5>
