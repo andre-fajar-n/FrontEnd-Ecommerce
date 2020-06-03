@@ -7,9 +7,9 @@ import { doLogout } from "../store/action/user"
 import { getSemuaProduk, kategori } from "../store/action/produk"
 
 class ProdukByKategori extends Component {
-  componentDidMount = () => {
-    this.props.kategori()
-    this.props.getSemuaProduk()
+  componentDidMount = async () => {
+    await this.props.kategori()
+    await this.props.getSemuaProduk()
   }
 
   render() {

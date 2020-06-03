@@ -8,9 +8,9 @@ import { kategori, getSemuaProduk } from "../store/action/produk"
 import { Link } from "react-router-dom"
 
 class Toko extends Component {
-  componentDidMount = () => {
-    this.props.kategori()
-    this.props.getSemuaProduk()
+  componentDidMount = async () => {
+    await this.props.kategori()
+    await this.props.getSemuaProduk()
   }
 
   changeRouterKategori = (namaKategori) => {

@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 class Daftar extends Component {
   postRegister = async () => {
     await this.props.register()
-    console.warn("cek daftar", this.props.dataUser.status_internal)
     if (this.props.dataUser.status_internal) {
       this.props.history.push("/profil")
     }

@@ -11,15 +11,14 @@ import { Link } from "react-router-dom"
 var currencyFormatter = require('currency-formatter');
 
 class Keranjang extends Component {
-  componentDidMount = () => {
-    this.props.getKeranjang()
-    this.props.kategori()
+  componentDidMount = async () => {
+    await this.props.getKeranjang()
+    await this.props.kategori()
   }
 
 
   render() {
     const keranjang = this.props.dataKeranjang
-    console.warn("cek checkout", keranjang)
     let totalHarga = 0
     let totalProduk = 0
     return (

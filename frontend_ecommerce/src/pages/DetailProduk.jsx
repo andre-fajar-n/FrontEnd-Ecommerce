@@ -10,9 +10,9 @@ import { changeInputQty, postKeranjang } from "../store/action/keranjang"
 var currencyFormatter = require('currency-formatter');
 
 class DetailProduk extends Component {
-  componentDidMount = () => {
-    this.props.kategori()
-    this.props.getSemuaProduk()
+  componentDidMount = async () => {
+    await this.props.kategori()
+    await this.props.getSemuaProduk()
   }
 
   changeRouterToko = (namaToko, id) => {
@@ -27,7 +27,6 @@ class DetailProduk extends Component {
     const produkID = namaProduk[0]
     const detailProduk = this.props.dataProduk.filter((item) => (item.id == produkID))
 
-    console.warn("cek detail produk", this.props)
     return (
       <Fragment>
         <Header {...this.props} />

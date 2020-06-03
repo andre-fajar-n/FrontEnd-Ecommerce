@@ -7,9 +7,9 @@ import { kategori, inputProduk, tambahProduk } from "../store/action/produk"
 import { Link, Redirect } from "react-router-dom"
 
 class TambahProduk extends Component {
-  componentDidMount = () => {
-    this.props.kategori()
-    this.props.getUser()
+  componentDidMount = async () => {
+    await this.props.kategori()
+    await this.props.getUser()
   }
 
   render() {

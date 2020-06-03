@@ -9,14 +9,13 @@ import { getKeranjang, deleteKeranjang } from "../store/action/keranjang"
 import { Link, Redirect } from "react-router-dom"
 
 class Keranjang extends Component {
-  componentDidMount = () => {
-    this.props.getKeranjang()
-    this.props.kategori()
+  componentDidMount = async () => {
+    await this.props.getKeranjang()
+    await this.props.kategori()
   }
 
   render() {
     const keranjang = this.props.dataKeranjang
-    console.warn("cek keranjang", this.props)
     return (
       <Fragment>
         {this.props.status_internal ? (
