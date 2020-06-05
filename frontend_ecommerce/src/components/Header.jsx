@@ -12,29 +12,32 @@ const Header = (props) => {
 
   const changeRouter = (kategori, id) => {
     kategori = kategori.replace(/ /gi, "-")
-    props.history.replace("/kategori/" + id + "&" + kategori)
+    props.history.push("/kategori/" + id + "&" + kategori)
+    console.warn("cek kategori in header")
   }
 
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/" className="navbar-brand">Andreino</Link>
+        <Link to="/" className="navbar-brand">
+          <img src={require("../logos/logo.png")} alt="logo andreino" width="100" height="100" class="d-inline-block align-top" />
+        </Link>
         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav m-auto">
-            <li className="nav-item dropdown li-in-navbar">
-              <div className="btn-group">
-                <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Kategori
+            <li className="nav-item dropdown">
+              {/* <div className="btn-group"> */}
+              <button type="button" id="dropdownMenuButton" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Kategori
               </button>
-                <div className="dropdown-menu">
-                  {props.dataKategori.map((value) => (
-                    <Link to='' key={value.id} onClick={() => changeRouter(value.tipe_produk, value.id)} className="dropdown-item" >{value.tipe_produk}</Link>
-                  ))}
-                </div>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {props.dataKategori.map((value) => (
+                  <Link key={value.id} onClick={() => changeRouter(value.tipe_produk, value.id)} className="dropdown-item" >{value.tipe_produk}</Link>
+                ))}
               </div>
+              {/* </div> */}
             </li>
             <li className="li-in-navbar">
               <form className="form-inline my-2 my-lg-0">

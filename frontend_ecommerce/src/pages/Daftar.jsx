@@ -7,7 +7,7 @@ class Daftar extends Component {
   postRegister = async () => {
     await this.props.register()
     if (this.props.dataUser.status_internal) {
-      this.props.history.push("/profil")
+      this.props.history.replace("/profil")
     }
   }
 

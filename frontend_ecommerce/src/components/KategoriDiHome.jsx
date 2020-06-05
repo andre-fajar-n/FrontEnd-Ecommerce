@@ -12,7 +12,7 @@ const ListKategori = (props) => {
   return (
     <div className="card bg-dark text-white" style={{ margin: "5px 0", width: `${diameter}`, height: `${diameter}` }}>
       <Link onClick={() => changeRouter(props.namaKategori, props.id)}>
-        <img src={require("../logo.svg")} className="card-img-top m-auto" alt="..." />
+        <img src={require("../logos/logo_transparent.png")} className="card-img-top m-auto" alt="..." />
         <div className="card-body text-center p-0">
           <p className="card-text">{props.namaKategori}</p>
         </div>

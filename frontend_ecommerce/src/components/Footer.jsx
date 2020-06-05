@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center">
-        <img src={require("../logo.svg")} alt="" width="100" height="100" />
+        <img src={require("../logos/logo_transparent.png")} alt="" width="100" height="100" />
       </div>
       <h1 className="text-center">Copyright</h1>
     </footer>

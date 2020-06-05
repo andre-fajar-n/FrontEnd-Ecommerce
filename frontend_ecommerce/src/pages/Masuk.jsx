@@ -7,7 +7,7 @@ class Masuk extends Component {
   postLogin = async () => {
     await this.props.doLogin();
     if (this.props.dataUser.status_internal) {
-      this.props.history.push("/");
+      this.props.history.replace("/");
     }
   };
   render() {
