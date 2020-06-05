@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import { doLogout, getUser } from "../store/action/user"
+import { doLogout, getDataBuyer } from "../store/action/user"
 import { connect } from "react-redux"
 import { kategori, inputProduk, tambahProduk } from "../store/action/produk"
 import { Link, Redirect } from "react-router-dom"
@@ -9,7 +9,7 @@ import { Link, Redirect } from "react-router-dom"
 class TambahProduk extends Component {
   componentDidMount = async () => {
     await this.props.kategori()
-    await this.props.getUser()
+    await this.props.getDataBuyer()
   }
 
   render() {
@@ -127,7 +127,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   doLogout,
   kategori,
-  getUser,
+  getDataBuyer,
   inputProduk,
   tambahProduk
 }

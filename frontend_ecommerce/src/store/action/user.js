@@ -14,63 +14,104 @@ export const changeInputPassword = (event) => ({
 
 export const doLogin = () => {
   return async (dispatch, getState) => {
-
     const dataUsername = getState().user.inputUsername;
-
     const dataPassword = getState().user.inputPassword;
 
-    await axios.get(url + "login",
-      {
-        params: {
-          username: dataUsername,
-          password: dataPassword
-        }
-      })
-      .then(async (response) => {
-        dispatch({
-          type: "DO_LOGIN",
-          payload: response.data.token
-        })
-        await axios.get(url + "user", {
-          headers: {
-            'Authorization': 'Bearer ' + getState().user.token
+    try {
+      const response = await axios.get(url + "login",
+        {
+          params: {
+            username: dataUsername,
+            password: dataPassword
           }
         })
-          .then((responseUser) => {
-            dispatch({
-              type: "GET_USER",
-              payload: responseUser.data
-            })
-          })
-      })
-      .catch((error) => {
-        console.warn("cek error", error)
-        dispatch({ type: "DO_LOGIN_FALSE" })
-      })
+      localStorage.setItem("token", response.data.token)
+
+      // start get biodata user
+      try {
+        const response = await axios.get(url + "user", {
+          headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("token")
+          }
+        })
+        localStorage.setItem("id", response.data.id)
+        localStorage.setItem("username", response.data.username)
+        localStorage.setItem("status_internal", response.data.status_internal)
+        localStorage.setItem("status_penjual", response.data.status_penjual)
+        localStorage.setItem("status_admin", response.data.status_admin)
+      } catch (error) {
+        alert("data cannot found")
+      }
+      // end get biodata user
+
+    } catch (error) {
+      alert("You don't have an account. Please register")
+    }
   }
 }
 
 export const register = () => {
   return async (dispatch, getState) => {
     const dataUsername = getState().user.inputUsername;
-
     const dataPassword = getState().user.inputPassword;
-
     const bodyRequest = {
       username: dataUsername,
       password: dataPassword
     }
+    try {
+      await axios.post(url + "user", bodyRequest)
 
-    await axios.post(url + "user", bodyRequest)
-      .then((response) => {
-        dispatch({ type: "REGISTER", payload: response.data })
-      })
+      // start get token for login
+      try {
+        const response = await axios.get(url + "login",
+          {
+            params: {
+              username: dataUsername,
+              password: dataPassword
+            }
+          })
+        localStorage.setItem("token", response.data.token)
+
+        // start get biodata user
+        try {
+          const response = await axios.get(url + "user", {
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+          })
+          localStorage.setItem("id", response.data.id)
+          localStorage.setItem("username", response.data.username)
+          localStorage.setItem("status_internal", response.data.status_internal)
+          localStorage.setItem("status_penjual", response.data.status_penjual)
+          localStorage.setItem("status_admin", response.data.status_admin)
+        } catch (error) {
+          alert("data cannot found")
+        }
+        // end get biodata user
+
+      } catch (error) {
+        alert("You don't have an account. Please register")
+      }
+      // end get token for login
+
+    } catch (error) {
+      alert("user have been registered")
+    }
   }
 }
 
-export const doLogout = () => ({ type: "DO_LOGOUT" })
+export const doLogout = () => {
+  return () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("id")
+    localStorage.removeItem("username")
+    localStorage.removeItem("status_internal")
+    localStorage.removeItem("status_penjual")
+    localStorage.removeItem("status_admin")
+  }
+}
 
-export const getUser = () => {
+export const getDataBuyer = () => {
   return async (dispatch, getState) => {
     try {
       const response = await axios({
@@ -79,16 +120,33 @@ export const getUser = () => {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
-          Authorization: `Bearer ${getState().user.token}`
+          Authorization: `Bearer ${localStorage.getItem("token")}`
         }
       })
       dispatch({
-        type: "GET_BIOADATA_USER",
+        type: "GET_DATA_BUYER",
         payload: response.data
       })
     } catch (error) {
       alert("Silahkan lengkapi Biodata Anda")
       console.warn("cek error", error)
+    }
+  }
+}
+
+export const getDataSeller = () => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.get(`${url}penjual`, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      })
+
+    } catch (error) {
+
     }
   }
 }

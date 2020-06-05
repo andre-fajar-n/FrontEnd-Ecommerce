@@ -60,7 +60,7 @@ const Header = (props) => {
               </Link>
             </li>
             <li className="li-in-navbar">
-              {props.dataUser.status_internal ? (
+              {localStorage.getItem("status_internal") ? (
                 <Link to="/profil">
                   <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Profil</button>
                 </Link>
@@ -71,7 +71,7 @@ const Header = (props) => {
                 )}
             </li>
             <li className="li-in-navbar">
-              {props.dataUser.status_internal ? (
+              {localStorage.getItem("status_internal") ? (
                 <Link onClick={() => postSignout()}>
                   <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Keluar</button>
                 </Link>

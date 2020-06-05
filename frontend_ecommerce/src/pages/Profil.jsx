@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import { doLogout, getUser } from "../store/action/user"
+import { doLogout, getDataBuyer } from "../store/action/user"
 import { connect } from "react-redux"
 import { kategori } from "../store/action/produk"
 import { Link, Redirect } from "react-router-dom"
@@ -9,20 +9,20 @@ import { Link, Redirect } from "react-router-dom"
 class Profil extends Component {
   componentDidMount = async () => {
     await this.props.kategori()
-    await this.props.getUser()
+    await this.props.getDataBuyer()
   }
 
   render() {
     return (
       <Fragment>
-        {this.props.status_internal ? (
+        {localStorage.getItem("status_internal") ? (
           <Fragment>
             <Header {...this.props} />
             <div>
-              <span>Nama: </span><span>{this.props.dataUser.biodata.nama}</span><br />
-              <span>Alamat: <span>{this.props.dataUser.biodata.alamat}</span></span><br />
-              <span>Email: <span>{this.props.dataUser.biodata.email}</span></span><br />
-              <span>No HP: <span>{this.props.dataUser.biodata.no_hp}</span></span>
+              <span>Nama: </span><span>{this.props.dataUser.dataBuyer.nama}</span><br />
+              <span>Alamat: <span>{this.props.dataUser.dataBuyer.alamat}</span></span><br />
+              <span>Email: <span>{this.props.dataUser.dataBuyer.email}</span></span><br />
+              <span>No HP: <span>{this.props.dataUser.dataBuyer.no_hp}</span></span>
             </div>
 
             <Footer />
@@ -46,7 +46,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   doLogout,
   kategori,
-  getUser
+  getDataBuyer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profil);
