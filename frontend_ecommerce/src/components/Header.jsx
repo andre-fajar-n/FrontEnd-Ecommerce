@@ -20,7 +20,7 @@ const Header = (props) => {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="/" className="navbar-brand">
-          <img src={require("../logos/logo.png")} alt="logo andreino" width="100" height="100" class="d-inline-block align-top" />
+          <img src={require("../logos/logo.png")} alt="logo andreino" width="100" height="100" className="d-inline-block align-top" />
         </Link>
         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

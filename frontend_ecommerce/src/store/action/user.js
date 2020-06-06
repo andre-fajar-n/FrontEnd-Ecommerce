@@ -128,8 +128,36 @@ export const getDataBuyer = () => {
         payload: response.data
       })
     } catch (error) {
-      alert("Silahkan lengkapi Biodata Anda")
+      // alert("Silahkan lengkapi Biodata Anda")
+      postDataUser()
       console.warn("cek error", error)
+    }
+  }
+}
+
+export const postDataUser = () => {
+  return async (dispatch, getState) => {
+    const bodyRequest = {
+      nama: getState().user.postNama,
+      alamat: getState().user.postAlamat,
+      email: getState().user.postEmail,
+      no_hp: getState().user.postNoHP,
+    }
+
+    try {
+      await axios({
+        method: "POST",
+        url: `${url}pembeli`,
+        data: bodyRequest,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      })
+      getDataBuyer()
+    } catch (error) {
+      alert("failed to upload data")
     }
   }
 }
@@ -150,3 +178,8 @@ export const getDataSeller = () => {
     }
   }
 }
+
+export const changeInputData = (event) => ({
+  type: "CHANGE_INPUT_DATA",
+  payload: event
+})
