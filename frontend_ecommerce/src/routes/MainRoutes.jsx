@@ -6,14 +6,14 @@ import "../style/js/script.js"
 import Masuk from "../pages/Masuk"
 import Daftar from "../pages/Daftar"
 import DetailProduk from "../pages/DetailProduk"
-import Toko from "../pages/Toko"
+import DetailToko from "../pages/DetailToko"
 import Keranjang from "../pages/Keranjang"
 import { Provider } from "react-redux"
 import store from "../store"
 import ProdukByKategori from "../pages/ProdukByKategori"
 import Checkout from "../pages/Checkout"
 import Profil from "../pages/Profil"
-import TambahProduk from "../pages/TambahProduk"
+import TokoUser from "../pages/TokoUser"
 
 const MainRoutes = () => {
   return (
@@ -24,11 +24,10 @@ const MainRoutes = () => {
           <Route exact path="/masuk" component={Masuk} />
           <Route exact path="/profil" component={Profil} />
           <Route exact path="/daftar" component={Daftar} />
-          <Route exact path="/toko" component={TambahProduk} />
+          <Route exact path="/toko" component={TokoUser} />
           <Route exact path="/keranjang" component={Keranjang} />
           <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/toko/:namaToko" component={Toko} />
-          <Route exact path="/toko/:namaToko/:kategori" component={Toko} />
+          <Route exact path="/toko/:namaToko" component={DetailToko} />
           <Route exact path="/kategori/:kategori" component={ProdukByKategori} />
           <Route exact path="/produk/:namaproduk" component={DetailProduk} />
         </Switch>

@@ -1,5 +1,6 @@
 const initialUserState = {
-  dataBuyer: {},
+  inputUsername: "",
+  inputPassword: ""
 }
 
 export default function userReducer(userState = initialUserState, action) {
@@ -13,16 +14,6 @@ export default function userReducer(userState = initialUserState, action) {
       return {
         ...userState,
         inputPassword: action.payload.target.value
-      }
-    case "CHANGE_INPUT_DATA":
-      return {
-        ...userState,
-        [action.payload.target.name]: action.payload.target.value
-      }
-    case "GET_DATA_BUYER":
-      return {
-        ...userState,
-        dataBuyer: action.payload
       }
     default:
       return userState

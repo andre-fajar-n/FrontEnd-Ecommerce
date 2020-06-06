@@ -19,7 +19,7 @@ class Masuk extends Component {
             <div className="content signin m-0">
               <form className="form-signin text-center" onSubmit={(e) => e.preventDefault()}>
                 <Link to="/">
-                  <img src={require("../logos/logo.png")} alt="" className="mb-4" width="150" height="150" />
+                  <img src={require("../logos/logo.png")} alt="Logo Andreino" className="mb-4" width="150" height="150" />
                 </Link>
                 <h1 className="h3 mb3 font-weight-normal">Masuk</h1>
                 <span>Username</span><br />

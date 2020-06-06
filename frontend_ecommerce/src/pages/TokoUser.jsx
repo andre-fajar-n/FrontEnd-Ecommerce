@@ -1,21 +1,21 @@
 import React, { Component, Fragment } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import { doLogout, getDataBuyer } from "../store/action/user"
+import { doLogout } from "../store/action/user"
 import { connect } from "react-redux"
 import { kategori, inputProduk, tambahProduk } from "../store/action/produk"
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
-class TambahProduk extends Component {
+class TokoUser extends Component {
   componentDidMount = async () => {
     await this.props.kategori()
-    await this.props.getDataBuyer()
   }
 
   render() {
+    console.warn("cek toko", typeof (localStorage.getItem("status_internal")))
     return (
       <Fragment>
-        {this.props.status_penjual ? (
+        {localStorage.getItem("status_penjual") ? (
           <Fragment>
             <Header {...this.props} />
             <div className="container">
@@ -107,10 +107,10 @@ class TambahProduk extends Component {
             <Footer />
           </Fragment>
         ) : (
-            <div>
+            <Fragment>
               {alert("Hanya untuk Penjual\nSilahkan masuk terlebih dahulu")}
               < Redirect to={{ pathname: "/masuk" }} />
-            </div>
+            </Fragment>
           )}
       </Fragment>
     )
@@ -127,9 +127,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   doLogout,
   kategori,
-  getDataBuyer,
   inputProduk,
   tambahProduk
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TambahProduk);
+export default connect(mapStateToProps, mapDispatchToProps)(TokoUser);

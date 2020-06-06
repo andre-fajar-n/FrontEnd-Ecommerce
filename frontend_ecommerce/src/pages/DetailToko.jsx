@@ -7,7 +7,7 @@ import { connect } from "react-redux"
 import { kategori, getSemuaProduk } from "../store/action/produk"
 import { Link } from "react-router-dom"
 
-class Toko extends Component {
+class DetailToko extends Component {
   componentDidMount = async () => {
     await this.props.kategori()
     await this.props.getSemuaProduk()
@@ -73,4 +73,4 @@ const mapDispatchToProps = {
   getSemuaProduk
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Toko);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailToko);
