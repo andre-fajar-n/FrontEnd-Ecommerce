@@ -4,10 +4,8 @@ import { Link } from "react-router-dom"
 
 const Header = (props) => {
   const postSignout = async () => {
+    props.history.push("/");
     await props.doLogout()
-    if (!props.is_login) {
-      props.history.push("/");
-    }
   };
 
   const changeRouter = (kategori, id) => {

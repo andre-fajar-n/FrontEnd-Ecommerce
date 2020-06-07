@@ -41,9 +41,9 @@ footer{background-color: #dc3545;}
 .toko-user{
     margin-top: 70px;
     margin-bottom: 70px;
-    height: 700px;
+    /* height: 700px; */
     border: 1px solid rgba(0,0,0,.125);
-    padding: 0;
+    padding: 20px;
 }
 /* end toko user page */
 
@@ -53,7 +53,7 @@ footer{background-color: #dc3545;}
     margin-bottom: 70px;
     height: 500px;
     border: 1px solid rgba(0,0,0,.125);
-    padding: 0;
+    padding: 20px;
 }
 
 .nav-tabs .nav-link{

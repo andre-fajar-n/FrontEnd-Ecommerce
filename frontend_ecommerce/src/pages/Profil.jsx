@@ -57,31 +57,31 @@ class Profil extends Component {
                 <Fragment>
                   <h1>Isi Biodata</h1>
                   <form style={{ display: "grid" }}>
-                    <div class="form-group row">
-                      <label for="postNama" class="col-sm-2 col-form-label">Nama</label>
-                      <div class="col-sm-10">
-                        <input onChange={(e) => this.props.changeInputDataBuyer(e)} name="postNama" type="text" class="form-control" placeholder="Nama Lengkap" />
+                    <div className="form-group row">
+                      <label for="postNama" className="col-sm-2 col-form-label">Nama</label>
+                      <div className="col-sm-10">
+                        <input onChange={(e) => this.props.changeInputDataBuyer(e)} name="postNama" type="text" className="form-control" placeholder="Nama Lengkap" />
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="postAlamat" class="col-sm-2 col-form-label">Alamat</label>
-                      <div class="col-sm-10">
-                        <input onChange={(e) => this.props.changeInputDataBuyer(e)} name="postAlamat" type="text" class="form-control" placeholder="Alamat Lengkap" />
+                    <div className="form-group row">
+                      <label for="postAlamat" className="col-sm-2 col-form-label">Alamat</label>
+                      <div className="col-sm-10">
+                        <input onChange={(e) => this.props.changeInputDataBuyer(e)} name="postAlamat" type="text" className="form-control" placeholder="Alamat Lengkap" />
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="postEmail" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                        <input onChange={(e) => this.props.changeInputDataBuyer(e)} name="postEmail" type="email" class="form-control" placeholder="Email" />
+                    <div className="form-group row">
+                      <label for="postEmail" className="col-sm-2 col-form-label">Email</label>
+                      <div className="col-sm-10">
+                        <input onChange={(e) => this.props.changeInputDataBuyer(e)} name="postEmail" type="email" className="form-control" placeholder="Email" />
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="postNoHP" class="col-sm-2 col-form-label">No. Handphone</label>
-                      <div class="col-sm-10">
-                        <input onChange={(e) => this.props.changeInputDataBuyer(e)} name="postNoHP" type="text" class="form-control" placeholder="Nomor Handphone" />
+                    <div className="form-group row">
+                      <label for="postNoHP" className="col-sm-2 col-form-label">No. Handphone</label>
+                      <div className="col-sm-10">
+                        <input onChange={(e) => this.props.changeInputDataBuyer(e)} name="postNoHP" type="text" className="form-control" placeholder="Nomor Handphone" />
                       </div>
                     </div>
-                    <button onClick={() => this.postData()} style={{ textAlign: "center" }} type="button" class="btn btn-danger">Tambah</button>
+                    <button onClick={() => this.postData()} style={{ textAlign: "center" }} type="button" className="btn btn-danger">Tambah</button>
                   </form>
                 </Fragment>
               ) : (
@@ -98,22 +98,22 @@ class Profil extends Component {
                       {/* TAB BIODATA */}
                       <div className="tab-pane fade show active" id="biodata" role="tabpanel" aria-labelledby="biodata-tab">
                         <form style={{ marginTop: "15px" }}>
-                          <div class="form-group row">
-                            <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
-                            <div class="col-sm-10">
+                          <div className="form-group row">
+                            <label for="inputNama" className="col-sm-2 col-form-label">Nama</label>
+                            <div className="col-sm-10">
                               {this.state.showFormNama ? (
                                 <div className="d-flex justify-content-between align-items-center">
                                   <input
                                     name="editNama"
                                     onChange={(e) => this.props.changeInputDataBuyer(e)}
-                                    type="text" class="form-control"
+                                    type="text" className="form-control"
                                     defaultValue={this.props.dataBuyer.nama} />
-                                  <button onClick={() => this.saveData("nama")} type="button" class="btn btn-danger">Save</button>
+                                  <button onClick={() => this.saveData("nama")} type="button" className="btn btn-danger">Save</button>
                                 </div>
                               ) : (
                                   <div className="d-flex justify-content-between align-items-center">
                                     <div>{this.props.dataBuyer.nama}</div>
-                                    <button onClick={() => this.editData("nama")} type="button" class="btn btn-danger">Edit</button>
+                                    <button onClick={() => this.editData("nama")} type="button" className="btn btn-danger">Edit</button>
                                   </div>
                                 )}
                             </div>
@@ -121,22 +121,22 @@ class Profil extends Component {
                           <hr />
                         </form>
                         <form>
-                          <div class="form-group row">
-                            <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
+                          <div className="form-group row">
+                            <label for="inputAlamat" className="col-sm-2 col-form-label">Alamat</label>
+                            <div className="col-sm-10">
                               {this.state.showFormAlamat ? (
                                 <div className="d-flex justify-content-between align-items-center">
                                   <input
                                     name="editAlamat"
                                     onChange={(e) => this.props.changeInputDataBuyer(e)}
-                                    type="text" class="form-control"
+                                    type="text" className="form-control"
                                     defaultValue={this.props.dataBuyer.alamat} />
-                                  <button onClick={() => this.saveData("alamat")} type="button" class="btn btn-danger">Save</button>
+                                  <button onClick={() => this.saveData("alamat")} type="button" className="btn btn-danger">Save</button>
                                 </div>
                               ) : (
                                   <div className="d-flex justify-content-between align-items-center">
                                     <div>{this.props.dataBuyer.alamat}</div>
-                                    <button onClick={() => this.editData("alamat")} type="button" class="btn btn-danger">Edit</button>
+                                    <button onClick={() => this.editData("alamat")} type="button" className="btn btn-danger">Edit</button>
                                   </div>
                                 )}
                             </div>
@@ -144,22 +144,22 @@ class Profil extends Component {
                           <hr />
                         </form>
                         <form>
-                          <div class="form-group row">
-                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
+                          <div className="form-group row">
+                            <label for="inputEmail" className="col-sm-2 col-form-label">Email</label>
+                            <div className="col-sm-10">
                               {this.state.showFormEmail ? (
                                 <div className="d-flex justify-content-between align-items-center">
                                   <input
                                     name="editEmail"
                                     onChange={(e) => this.props.changeInputDataBuyer(e)}
-                                    type="email" class="form-control"
+                                    type="email" className="form-control"
                                     defaultValue={this.props.dataBuyer.email} />
-                                  <button onClick={() => this.saveData("email")} type="button" class="btn btn-danger">Save</button>
+                                  <button onClick={() => this.saveData("email")} type="button" className="btn btn-danger">Save</button>
                                 </div>
                               ) : (
                                   <div className="d-flex justify-content-between align-items-center">
                                     <div>{this.props.dataBuyer.email}</div>
-                                    <button onClick={() => this.editData("email")} type="button" class="btn btn-danger">Edit</button>
+                                    <button onClick={() => this.editData("email")} type="button" className="btn btn-danger">Edit</button>
                                   </div>
                                 )}
                             </div>
@@ -167,22 +167,22 @@ class Profil extends Component {
                           <hr />
                         </form>
                         <form>
-                          <div class="form-group row">
-                            <label for="inputNoHP" class="col-sm-2 col-form-label">Nomor HP</label>
-                            <div class="col-sm-10">
+                          <div className="form-group row">
+                            <label for="inputNoHP" className="col-sm-2 col-form-label">Nomor HP</label>
+                            <div className="col-sm-10">
                               {this.state.showFormNoHP ? (
                                 <div className="d-flex justify-content-between align-items-center">
                                   <input
                                     name="editNoHP"
                                     onChange={(e) => this.props.changeInputDataBuyer(e)}
-                                    type="text" class="form-control"
+                                    type="text" className="form-control"
                                     defaultValue={this.props.dataBuyer.no_hp} />
-                                  <button onClick={() => this.saveData("nohp")} type="button" class="btn btn-danger">Save</button>
+                                  <button onClick={() => this.saveData("nohp")} type="button" className="btn btn-danger">Save</button>
                                 </div>
                               ) : (
                                   <div className="d-flex justify-content-between align-items-center">
                                     <div>{this.props.dataBuyer.no_hp}</div>
-                                    <button onClick={() => this.editData("nohp")} type="button" class="btn btn-danger">Edit</button>
+                                    <button onClick={() => this.editData("nohp")} type="button" className="btn btn-danger">Edit</button>
                                   </div>
                                 )}
                             </div>

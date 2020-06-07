@@ -4,10 +4,12 @@ import userReducer from "./reducer/user";
 import produkReducer from "./reducer/produk";
 import keranjangReducer from "./reducer/keranjang";
 import buyerReducer from "./reducer/buyer";
+import sellerReducer from "./reducer/seller";
 
 const rootReducer = combineReducers({
   user: userReducer,
   buyer: buyerReducer,
+  seller: sellerReducer,
   produk: produkReducer,
   keranjang: keranjangReducer,
 })

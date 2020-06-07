@@ -110,20 +110,3 @@ export const doLogout = () => {
     localStorage.removeItem("status_admin")
   }
 }
-
-export const getDataSeller = () => {
-  return async (dispatch, getState) => {
-    try {
-      const response = await axios.get(`${url}penjual`, {
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json; charset=utf-8",
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
-      })
-
-    } catch (error) {
-
-    }
-  }
-}
