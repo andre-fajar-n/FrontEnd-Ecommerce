@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import IsiKeranjang from "../components/IsiKeranjang"
 import { doLogout } from "../store/action/user"
 import { connect } from "react-redux"
 import { kategori } from "../store/action/produk"
@@ -57,7 +56,7 @@ class Keranjang extends Component {
                     <div>
                       <h6>{item.cart.seller_id.nama}</h6>
                       {item.transaction_detail.map((value) => (
-                        <div className="card mb-3" style={{ maxWidth: "540px;" }}>
+                        <div className="card mb-3" style={{ maxWidth: "540px" }}>
                           <div className="row no-gutters">
                             <div className="col-md-2">
                               <img src={process.env.REACT_APP_BASE_URL + "img/" + value.product_id.gambar} className="card-img" alt="..." />

@@ -31,7 +31,7 @@ const Header = (props) => {
               </button>
               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {props.dataKategori.map((value) => (
-                  <Link key={value.id} onClick={() => changeRouter(value.tipe_produk, value.id)} className="dropdown-item" >{value.tipe_produk}</Link>
+                  <div key={value.id} onClick={() => changeRouter(value.tipe_produk, value.id)} className="dropdown-item" >{value.tipe_produk}</div>
                 ))}
               </div>
               {/* </div> */}
@@ -69,9 +69,9 @@ const Header = (props) => {
             </li>
             <li className="li-in-navbar">
               {localStorage.getItem("status_internal") ? (
-                <Link onClick={() => postSignout()}>
+                <div onClick={() => postSignout()}>
                   <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Keluar</button>
-                </Link>
+                </div>
               ) : (
                   <Link to="/daftar">
                     <button className="masuk-daftar btn btn-danger my-2 my-sm-0">Daftar</button>

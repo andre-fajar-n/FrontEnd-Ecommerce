@@ -7,13 +7,15 @@ import { kategori, inputProduk, tambahProduk, fileSelectedHandler } from "../sto
 import { Redirect } from "react-router-dom"
 import TambahProduk from "../components/TambahProduk"
 import BiodataSeller from "../components/BiodataPenjual"
-import { getDataSeller, changeInputDataSeller, editDataSeller, postDataSeller } from "../store/action/seller"
+import { getDataSeller, changeInputDataSeller, editDataSeller, postDataSeller, getProductSeller, deleteProductSeller } from "../store/action/seller"
 import TambahDataPenjual from "../components/TambahDataPenjual"
+import ProdukDiTokoPenjual from "../components/ProdukDiTokoPenjual"
 
 class TokoUser extends Component {
   componentDidMount = async () => {
     await this.props.kategori()
     await this.props.getDataSeller()
+    await this.props.getProductSeller()
   }
 
   state = {
@@ -47,6 +49,12 @@ class TokoUser extends Component {
     await this.props.getDataSeller()
   }
 
+  deleteProduct = async (id) => {
+    await this.props.deleteProductSeller(id)
+    await this.props.history.push("/toko")
+    await this.props.getDataSeller()
+  }
+
   render() {
     return (
       <Fragment>
@@ -64,7 +72,7 @@ class TokoUser extends Component {
                         href="#pills-biodata"
                         role="tab"
                         aria-controls="pills-biodata"
-                        aria-selected="false">Biodata</a>
+                        aria-selected="false">Detail Toko</a>
                     </li>
                     <li className="nav-item">
                       <a className="nav-link"
@@ -117,7 +125,11 @@ class TokoUser extends Component {
 
                     {/* LIST PRODUK */}
                     <div className="tab-pane fade" id="pills-list-produk" role="tabpanel" aria-labelledby="pills-list-produk-tab">
-                      2
+                      {this.props.productSeller.map((value) => (
+                        <ProdukDiTokoPenjual key={value.id}
+                          value={value}
+                          deleteProduct={this.deleteProduct} />
+                      ))}
                     </div>
 
                     {/* RIWAYAT PENJUALAN */}
@@ -153,6 +165,7 @@ class TokoUser extends Component {
 const mapStateToProps = (state) => ({
   dataSeller: state.seller.dataSeller,
   dataKategori: state.produk.allKategori,
+  productSeller: state.seller.productSeller
 })
 
 const mapDispatchToProps = {
@@ -164,7 +177,9 @@ const mapDispatchToProps = {
   fileSelectedHandler,
   changeInputDataSeller,
   editDataSeller,
-  postDataSeller
+  postDataSeller,
+  getProductSeller,
+  deleteProductSeller
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TokoUser);

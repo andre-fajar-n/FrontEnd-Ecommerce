@@ -1,5 +1,6 @@
 const initialSeller = {
   dataSeller: {},
+  productSeller: []
 }
 
 export default function sellerReducer(sellerState = initialSeller, action) {
@@ -17,6 +18,11 @@ export default function sellerReducer(sellerState = initialSeller, action) {
       return {
         ...sellerState,
         [action.payload.target.name]: action.payload.target.value
+      }
+    case "GET_PRODUCT_SELLER":
+      return {
+        ...sellerState,
+        productSeller: action.payload
       }
     default:
       return sellerState

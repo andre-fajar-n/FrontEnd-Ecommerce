@@ -83,3 +83,39 @@ export const postDataSeller = () => {
     }
   }
 }
+
+export const getProductSeller = () => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.get(`${url}produk/penjual`, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      })
+      dispatch({
+        type: "GET_PRODUCT_SELLER",
+        payload: response.data
+      })
+    } catch (error) {
+      console.error("Belum ada produk yang dimasukkan")
+    }
+  }
+}
+
+export const deleteProductSeller = (id) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`${url}produk/penjual/${id}`, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      })
+    } catch (error) {
+      console.error("gagal menghapus produk", error)
+    }
+  }
+}
