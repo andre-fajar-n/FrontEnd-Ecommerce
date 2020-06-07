@@ -22,11 +22,6 @@ export const getKeranjang = () => {
         payload: []
       })
     }
-    // .then((response) => {
-    // })
-    // .catch((error) => {
-    //   console.error(error)
-    // })
   }
 }
 

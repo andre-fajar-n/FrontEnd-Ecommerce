@@ -16,7 +16,6 @@ class DetailToko extends Component {
   changeRouterKategori = (namaKategori) => {
     namaKategori = namaKategori.replace(/ /gi, "-")
     // this.props.history.replace(`${this.props.location.pathname}/` + namaKategori)
-    console.warn("cek toko", this.props.location.pathname)
   }
 
   render() {

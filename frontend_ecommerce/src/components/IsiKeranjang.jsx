@@ -4,7 +4,6 @@ import { Link, Redirect } from "react-router-dom";
 var currencyFormatter = require('currency-formatter');
 
 const IsiKeranjang = (props) => {
-  console.warn("cek keranjang", props)
   return (
     <tr>
       <td>{props.index}</td>

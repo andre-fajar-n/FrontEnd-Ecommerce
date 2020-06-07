@@ -45,14 +45,13 @@ class Profil extends Component {
   }
 
   render() {
-    console.warn("cek input data", this.props.dataBuyer)
     return (
       <Fragment>
-        {localStorage.getItem("status_internal") ? (
+        {localStorage.getItem("status_internal") === "true" ? (
           <Fragment>
             <Header {...this.props} />
 
-            <div className="container profile" style={{ height: "500px" }}>
+            <div className="container profile">
               {typeof (this.props.dataBuyer.nama) === "undefined" ? (
                 // isi biodata ketika biodata belum diisi
                 <Fragment>
@@ -87,7 +86,7 @@ class Profil extends Component {
                 </Fragment>
               ) : (
                   <Fragment>
-                    <ul className="nav nav-tabs" id="nav-tab" role="tablist">
+                    <ul className="nav nav-pills mb-3 tab-header" id="nav-tab" role="tablist">
                       <li className="nav-item">
                         <a className="nav-link active" id="biodata-tab" data-toggle="tab" href="#biodata" role="tab" aria-controls="biodata" aria-selected="true">Biodata</a>
                       </li>
@@ -95,7 +94,7 @@ class Profil extends Component {
                         <a className="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false">Riwayat Belanja</a>
                       </li>
                     </ul>
-                    <div className="tab-content" id="nav-tabContent">
+                    <div className="tab-content" id="pills-tabContent" style={{ padding: "0 20px" }}>
                       {/* TAB BIODATA */}
                       <div className="tab-pane fade show active" id="biodata" role="tabpanel" aria-labelledby="biodata-tab">
                         <form style={{ marginTop: "15px" }}>

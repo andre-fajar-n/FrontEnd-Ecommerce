@@ -13,7 +13,7 @@ class Masuk extends Component {
   render() {
     return (
       <Fragment>
-        {localStorage.getItem("status_internal") ? (
+        {localStorage.getItem("status_internal") === "true" ? (
           <Redirect to="/" />
         ) : (
             <div className="content signin m-0">

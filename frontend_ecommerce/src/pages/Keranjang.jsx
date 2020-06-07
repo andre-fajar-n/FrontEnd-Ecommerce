@@ -18,7 +18,7 @@ class Keranjang extends Component {
     const keranjang = this.props.dataKeranjang
     return (
       <Fragment>
-        {localStorage.getItem("status_internal") ? (
+        {localStorage.getItem("status_internal") === "true" ? (
           <Fragment>
             {typeof (this.props.dataBuyer.nama) === "undefined" ? (
               <Fragment>

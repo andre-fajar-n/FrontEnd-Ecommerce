@@ -1,7 +1,6 @@
 const initialStateProduk = {
   allProduk: [],
   allKategori: [],
-  kategoriID: {},
   is_loading: false
 }
 
@@ -23,6 +22,11 @@ export default function produkReducer(produkState = initialStateProduk, action) 
       return {
         ...produkState,
         [action.payload.target.name]: action.payload.target.value
+      }
+    case "INPUT_FILE":
+      return {
+        ...produkState,
+        [action.payload.target.name]: action.payload.target.files[0],
       }
     case "IS_LOADING":
       return {

@@ -24,7 +24,7 @@ export const getDataBuyer = () => {
         payload: response.data
       })
     } catch (error) {
-      console.warn("cek error", error)
+      console.error("cek error", error)
       dispatch({ type: "GET_DATA_BUYER_FAILED" })
     }
   }
@@ -69,7 +69,6 @@ export const editDataBuyer = () => {
     else if (typeof (editEmail) === "string") bodyRequest['email'] = editEmail
     else if (typeof (editNoHP) === "string") bodyRequest['no_hp'] = editNoHP
 
-    console.warn("cek action edit data", bodyRequest)
     try {
       await axios({
         method: "PATCH",

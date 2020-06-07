@@ -6,7 +6,7 @@ import { doLogout } from "../store/action/user"
 import { connect } from "react-redux"
 import { kategori } from "../store/action/produk"
 import { getKeranjang, deleteKeranjang, checkout } from "../store/action/keranjang"
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 var currencyFormatter = require('currency-formatter');
 
@@ -23,7 +23,7 @@ class Keranjang extends Component {
     let totalProduk = 0
     return (
       <Fragment>
-        {this.props.status_internal ? (
+        {localStorage.getItem("status_internal") === "true" ? (
           <Fragment>
             <Header {...this.props} />
             <section className="container">
@@ -95,7 +95,7 @@ class Keranjang extends Component {
         ) : (
             <div>
               {alert("Silahkan masuk terlebih dahulu")}
-              < Redirect to={{ pathname: "/masuk" }} />
+              <Redirect to={{ pathname: "/masuk" }} />
             </div>
           )}
       </Fragment>

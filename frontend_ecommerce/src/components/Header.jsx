@@ -13,7 +13,6 @@ const Header = (props) => {
   const changeRouter = (kategori, id) => {
     kategori = kategori.replace(/ /gi, "-")
     props.history.push("/kategori/" + id + "&" + kategori)
-    console.warn("cek kategori in header")
   }
 
   return (

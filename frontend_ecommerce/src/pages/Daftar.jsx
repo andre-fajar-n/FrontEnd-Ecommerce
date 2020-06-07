@@ -14,7 +14,7 @@ class Daftar extends Component {
   render() {
     return (
       <Fragment>
-        {localStorage.getItem("status_internal") ? (
+        {localStorage.getItem("status_internal") === "true" ? (
           <Redirect to="/" />
         ) : (
             <form className="form-signin text-center" onSubmit={(e) => e.preventDefault()}>
