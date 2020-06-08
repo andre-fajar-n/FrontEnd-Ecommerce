@@ -16,13 +16,16 @@ services:
 env:
   global:
   - TRAVIS_ALLOW_FAILURE=false
+
+before_script:
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- cd frontend_ecommerce/
+
 install:
 - npm install
 - npm run build
 #- npm run test
 
-before_script:
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 script:
 
 - echo "skipping test"
