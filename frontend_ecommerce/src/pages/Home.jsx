@@ -60,7 +60,7 @@ class Home extends Component {
             </div>
           </div>
           <div>
-            <h3>Produk Terbaru</h3>
+            <h3>Terbaru</h3>
             {tampilkanHasilSplit("produk", splitProduk, this.props)}
           </div>
         </section>
