@@ -19,7 +19,7 @@ class ProdukByKategori extends Component {
     const kategoriID = namaKategori[0]
     namaKategori = namaKategori[1].replace(/-/gi, " ")
     const produkFilter = this.props.dataProduk.filter((value) => (
-      value.product_type_id == kategoriID
+      parseInt(value.product_type_id) === parseInt(kategoriID)
     ))
 
     const splitProduk = splitData(produkFilter, 4)

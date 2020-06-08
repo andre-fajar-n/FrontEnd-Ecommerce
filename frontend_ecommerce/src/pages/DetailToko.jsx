@@ -30,6 +30,7 @@ class DetailToko extends Component {
         item.id === value.product_type_id
       ))
       if (filterKategoriID[0]) return item
+      return null
     })
 
     return (

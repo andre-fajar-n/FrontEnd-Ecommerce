@@ -1,9 +1,9 @@
-import React, { Fragment } from "react"
+import React from "react"
 
 const currencyFormatter = require('currency-formatter');
 
 const ProdukDiTokoPenjual = (props) => {
-  const deskripsiNew = props.value.deskripsi.split("\n")
+  // const deskripsiNew = props.value.deskripsi.split("\n")
   return (
     <div className="card mb-3" style={{ padding: "0 10px" }}>
       <div className="row no-gutters">

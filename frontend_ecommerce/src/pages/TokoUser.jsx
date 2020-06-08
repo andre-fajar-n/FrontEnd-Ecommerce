@@ -107,7 +107,6 @@ class TokoUser extends Component {
                     <div className="tab-pane fade show active" id="pills-biodata" role="tabpanel" aria-labelledby="pills-biodata-tab">
                       <BiodataSeller
                         state={this.state}
-                        saveData={this.saveData}
                         changeInputDataSeller={this.props.changeInputDataSeller}
                         dataSeller={this.props.dataSeller}
                         editData={this.editData}

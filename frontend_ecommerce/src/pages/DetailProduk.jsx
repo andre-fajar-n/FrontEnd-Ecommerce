@@ -25,7 +25,7 @@ class DetailProduk extends Component {
     namaProduk = namaProduk.replace("/produk/", '')
     namaProduk = namaProduk.split("&")
     const produkID = namaProduk[0]
-    const detailProduk = this.props.dataProduk.filter((item) => (item.id == produkID))
+    const detailProduk = this.props.dataProduk.filter((item) => (parseInt(item.id) === parseInt(produkID)))
 
     return (
       <Fragment>

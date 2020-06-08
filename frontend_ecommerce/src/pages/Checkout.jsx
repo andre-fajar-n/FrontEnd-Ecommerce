@@ -79,6 +79,7 @@ class Keranjang extends Component {
                   {keranjang.map((value) => {
                     totalHarga += value.cart.total_harga
                     totalProduk += value.cart.total_kuantitas
+                    return <Fragment></Fragment>
                   })}
                   <div>Total harga ({totalProduk} Produk): {currencyFormatter.format(totalHarga, { code: 'IDR' })}</div><hr />
                   <div>Total Tagihan</div><hr />
