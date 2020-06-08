@@ -7,11 +7,13 @@ import { connect } from "react-redux"
 import { kategori } from "../store/action/produk"
 import { getKeranjang, deleteKeranjang } from "../store/action/keranjang"
 import { Link, Redirect } from "react-router-dom"
+import { getDataBuyer } from "../store/action/buyer"
 
 class Keranjang extends Component {
   componentDidMount = async () => {
     await this.props.getKeranjang()
     await this.props.kategori()
+    await this.props.getDataBuyer()
   }
 
   render() {
@@ -87,6 +89,7 @@ const mapDispatchToProps = {
   doLogout,
   kategori,
   getKeranjang,
+  getDataBuyer,
   deleteKeranjang
 }
 
