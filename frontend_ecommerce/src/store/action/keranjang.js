@@ -9,6 +9,8 @@ export const getKeranjang = () => {
     try {
       const response = await axios.get(url + "keranjang", {
         headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
           'Authorization': 'Bearer ' + localStorage.getItem("token")
         }
       })
@@ -35,7 +37,11 @@ export const postKeranjang = (product_id) => {
     axios({
       method: "POST",
       url: url + "keranjang",
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json; charset=utf-8",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      },
       params: {
         product_id: product_id,
         quantity: getState().keranjang.inputQty
