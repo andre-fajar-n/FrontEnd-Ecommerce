@@ -99,7 +99,7 @@ class TokoUser extends Component {
                         href="#pills-riwayat-penjualan"
                         role="tab"
                         aria-controls="pills-riwayat-penjualan"
-                        aria-selected="false">Riwayat Penjualan</a>
+                        aria-selected="false">Penjualan</a>
                     </li>
                   </ul>
                   <div className="tab-content" id="pills-tabContent" style={{ padding: "0 20px" }}>
