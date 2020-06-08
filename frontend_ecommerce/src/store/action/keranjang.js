@@ -9,7 +9,7 @@ export const getKeranjang = () => {
     try {
       const response = await axios.get(url + "keranjang", {
         headers: {
-          'Authorization': 'Bearer ' + getState().user.token
+          'Authorization': 'Bearer ' + localStorage.getItem("token")
         }
       })
       dispatch({
@@ -35,7 +35,7 @@ export const postKeranjang = (product_id) => {
     axios({
       method: "POST",
       url: url + "keranjang",
-      headers: { Authorization: `Bearer ${getState().user.token}` },
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       params: {
         product_id: product_id,
         quantity: getState().keranjang.inputQty
@@ -52,7 +52,7 @@ export const deleteKeranjang = (id) => {
       headers: {
         "Content-Type": "application/json; charset=utf-8",
         Accept: "application/json; charset=utf-8",
-        Authorization: `Bearer ${getState().user.token}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     })
   }
@@ -66,7 +66,7 @@ export const checkout = () => {
       headers: {
         "Content-Type": "application/json; charset=utf-8",
         Accept: "application/json; charset=utf-8",
-        Authorization: `Bearer ${getState().user.token}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     })
   }
