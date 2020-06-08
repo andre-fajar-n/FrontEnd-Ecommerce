@@ -30,7 +30,7 @@ const TambahDataPenjual = (props) => {
             <input onChange={(e) => props.changeInputDataSeller(e)} name="postNoHP" type="text" className="form-control" placeholder="Nomor Handphone" />
           </div>
         </div>
-        <button onClick={() => postData()} style={{ textAlign: "center" }} type="button" className="btn btn-danger">Tambah</button>
+        <button onClick={() => props.postData()} style={{ textAlign: "center" }} type="button" className="btn btn-danger">Tambah</button>
       </form>
     </Fragment>
   )
