@@ -16,13 +16,19 @@ class Keranjang extends Component {
     await this.props.getDataBuyer()
   }
 
+  delete = async (id) => {
+    await this.props.deleteKeranjang(id)
+    await this.props.history.replace("/keranjang")
+    await this.props.getKeranjang()
+  }
+
   render() {
     const keranjang = this.props.dataKeranjang
     return (
       <Fragment>
         {localStorage.getItem("status_internal") === "true" ? (
           <Fragment>
-            {typeof (this.props.dataBuyer.nama) === "undefined" ? (
+            {typeof (this.props.dataBuyer.nama) === undefined ? (
               <Fragment>
                 {alert("Silahkan lengkapi biodata anda dulu")}
                 < Redirect to={{ pathname: "/profil" }} />
@@ -56,7 +62,7 @@ class Keranjang extends Component {
                               harga={value.product_id.harga}
                               jumlah={value.kuantitas}
                               total={value.harga}
-                              deleteKeranjang={this.props.deleteKeranjang}
+                              deleteKeranjang={this.delete}
                             />
                           ))}
                         </tbody>

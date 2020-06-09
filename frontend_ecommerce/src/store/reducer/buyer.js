@@ -1,5 +1,6 @@
 const initialBuyerState = {
   dataBuyer: {},
+  historyBuyer: []
 }
 
 export default function buyerReducer(buyerState = initialBuyerState, action) {
@@ -18,6 +19,11 @@ export default function buyerReducer(buyerState = initialBuyerState, action) {
       return initialBuyerState
     case "GET_DATA_BUYER_FAILED":
       return initialBuyerState
+    case "GET_HISTORY":
+      return {
+        ...buyerState,
+        historyBuyer: action.payload
+      }
     default:
       return buyerState
   }
