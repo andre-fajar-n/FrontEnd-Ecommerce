@@ -1,6 +1,7 @@
 const initialSeller = {
   dataSeller: {},
-  productSeller: []
+  productSeller: [],
+  historySeller: []
 }
 
 export default function sellerReducer(sellerState = initialSeller, action) {
@@ -13,7 +14,13 @@ export default function sellerReducer(sellerState = initialSeller, action) {
     case "GET_DATA_SELLER_FAILED":
       return initialSeller
     case "PATCH_DATA_SELLER":
-      return initialSeller
+      return {
+        ...sellerState,
+        editNama: undefined,
+        editAlamat: undefined,
+        editEmail: undefined,
+        editNoHP: undefined
+      }
     case "CHANGE_INPUT_DATA":
       return {
         ...sellerState,
@@ -23,6 +30,11 @@ export default function sellerReducer(sellerState = initialSeller, action) {
       return {
         ...sellerState,
         productSeller: action.payload
+      }
+    case "GET_HISTORY":
+      return {
+        ...sellerState,
+        historySeller: action.payload
       }
     default:
       return sellerState

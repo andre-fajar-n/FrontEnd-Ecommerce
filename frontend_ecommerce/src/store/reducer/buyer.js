@@ -16,7 +16,13 @@ export default function buyerReducer(buyerState = initialBuyerState, action) {
         dataBuyer: action.payload
       }
     case "PATCH_DATA_BUYER":
-      return initialBuyerState
+      return {
+        ...buyerState,
+        editNama: undefined,
+        editAlamat: undefined,
+        editEmail: undefined,
+        editNoHP: undefined
+      }
     case "GET_DATA_BUYER_FAILED":
       return initialBuyerState
     case "GET_HISTORY":

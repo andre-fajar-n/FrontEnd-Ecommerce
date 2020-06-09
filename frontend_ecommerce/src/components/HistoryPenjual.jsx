@@ -2,14 +2,14 @@ import React, { Fragment } from "react"
 import moment from "moment"
 import currencyFormatter from "currency-formatter"
 
-const HistoryPembeli = (props) => {
+const HistoryPenjual = (props) => {
   return (
     <Fragment>
       <div className="product mb-3">
         <span className="history">{moment.utc(props.value.cart.updated_at).format("dddd, D MMMM YYYY")}</span>
         <div className="history row">
           <div className="col-md-6 p-0">
-            <span>{props.value.cart.seller_id.nama}</span>
+            <span>{props.value.cart.buyer_id.nama}</span>
           </div>
           <div className="col-md-6" style={{ borderLeft: "2px solid #f0f0f0" }}>
             <span>Total Belanja : {currencyFormatter.format(props.value.cart.total_harga, { code: 'IDR' })}</span>
@@ -42,4 +42,4 @@ const HistoryPembeli = (props) => {
   )
 }
 
-export default HistoryPembeli;
+export default HistoryPenjual;

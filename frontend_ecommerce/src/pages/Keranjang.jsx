@@ -28,7 +28,7 @@ class Keranjang extends Component {
       <Fragment>
         {localStorage.getItem("status_internal") === "true" ? (
           <Fragment>
-            {typeof (this.props.dataBuyer.nama) === undefined ? (
+            {this.props.dataBuyer.nama === undefined ? (
               <Fragment>
                 {alert("Silahkan lengkapi biodata anda dulu")}
                 < Redirect to={{ pathname: "/profil" }} />

@@ -47,7 +47,6 @@ class Profil extends Component {
   }
 
   render() {
-    console.warn("cek history", this.props.history)
     return (
       <Fragment>
         {localStorage.getItem("status_internal") === "true" ? (
@@ -56,9 +55,9 @@ class Profil extends Component {
 
             <div className="container profile">
               <div style={{ margin: "-20px" }}>
-                {typeof (this.props.dataBuyer.nama) === undefined ? (
+                {this.props.dataBuyer.nama === undefined ? (
                   // isi biodata ketika biodata belum diisi
-                  <Fragment>
+                  <div style={{ padding: "20px" }}>
                     <h1>Isi Biodata</h1>
                     <form style={{ display: "grid" }}>
                       <div className="form-group row">
@@ -87,7 +86,7 @@ class Profil extends Component {
                       </div>
                       <button onClick={() => this.postData()} style={{ textAlign: "center" }} type="button" className="btn btn-danger">Tambah</button>
                     </form>
-                  </Fragment>
+                  </div>
                 ) : (
                     <Fragment>
                       <ul className="nav nav-pills mb-3 tab-header" id="nav-tab" role="tablist">
@@ -197,7 +196,7 @@ class Profil extends Component {
 
                         {/* TAB HISTORY BELANJA */}
                         <div className="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
-                          {this.props.history.map((value) => (
+                          {this.props.riwayat.map((value) => (
                             <HistoryPembeli
                               value={value} />
                           ))}
@@ -222,7 +221,7 @@ class Profil extends Component {
 const mapStateToProps = (state) => ({
   dataBuyer: state.buyer.dataBuyer,
   dataKategori: state.produk.allKategori,
-  history: state.buyer.historyBuyer
+  riwayat: state.buyer.historyBuyer
 })
 
 const mapDispatchToProps = {

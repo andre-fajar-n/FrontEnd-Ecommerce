@@ -119,3 +119,25 @@ export const deleteProductSeller = (id) => {
     }
   }
 }
+
+export const historySeller = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "GET",
+        url: `${url}history/penjual`,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      })
+      dispatch({
+        type: "GET_HISTORY",
+        payload: response.data
+      })
+    } catch (error) {
+      console.error("gagal memperoleh data history penjual", error)
+    }
+  }
+}
