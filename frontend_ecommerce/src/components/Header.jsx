@@ -27,7 +27,7 @@ const Header = (props) => {
           <ul className="navbar-nav m-auto">
             <li className="nav-item dropdown">
               <div className="btn-group">
-                <button type="button" id="dropdownMenuButton" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" id="dropdownMenuButton" className="btn btn-danger dropdown-toggle button-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Kategori
               </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -49,12 +49,12 @@ const Header = (props) => {
           <ul className="navbar-nav ml-auto">
             <li className="li-in-navbar d-flex align-items-center">
               <Link to="/keranjang">
-                <i className="fas fa-shopping-cart" style={{ fontSize: "25px" }}></i>
+                <i className="fas fa-shopping-cart ikon"></i>
               </Link>
             </li>
             <li className="li-in-navbar d-flex align-items-center">
               <Link to="/toko">
-                <i className="fas fa-store" style={{ fontSize: "25px" }}></i>
+                <i className="fas fa-store ikon"></i>
               </Link>
             </li>
             <li className="li-in-navbar">

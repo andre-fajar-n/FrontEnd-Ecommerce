@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 
 const ListKategori = (props) => {
-  const diameter = "120px"
+  const diameter = "100px"
 
   const changeRouter = (kategori, id) => {
     kategori = kategori.replace(/ /gi, "-")
@@ -10,9 +10,9 @@ const ListKategori = (props) => {
   }
 
   return (
-    <div className="card bg-dark text-white" style={{ margin: "5px 0", width: `${diameter}`, height: `${diameter}` }}>
-      <Link onClick={() => changeRouter(props.namaKategori, props.id)}>
-        <img src={require("../logos/logo_transparent.png")} className="card-img-top m-auto" alt="..." />
+    <div className="card text-white" style={{ margin: "0", width: `${diameter}`, height: `${diameter}`, border: "none" }}>
+      <Link onClick={() => changeRouter(props.namaKategori, props.id)} className="kategori">
+        <img src={require("../logos/just_logo.png")} className="card-img-top m-auto" alt="..." />
         <div className="card-body text-center p-0">
           <p className="card-text">{props.namaKategori}</p>
         </div>

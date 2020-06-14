@@ -68,7 +68,7 @@ class TokoUser extends Component {
               <div style={{ margin: "-20px" }}>
                 {localStorage.getItem("status_penjual") === "true" ? (
                   <Fragment>
-                    <ul className="nav nav-pills mb-3 tab-header" id="pills-tab" role="tablist">
+                    <ul className="nav nav-pills tab-header" id="pills-tab" role="tablist">
                       <li className="nav-item">
                         <a className="nav-link active"
                           id="pills-biodata-tab"
@@ -106,7 +106,7 @@ class TokoUser extends Component {
                           aria-selected="false">Riwayat Penjualan</a>
                       </li>
                     </ul>
-                    <div className="tab-content" id="pills-tabContent" style={{ padding: "0 20px" }}>
+                    <div className="tab-content" id="pills-tabContent" style={{ padding: "20px" }}>
                       {/* BIODATA */}
                       <div className="tab-pane fade show active" id="pills-biodata" role="tabpanel" aria-labelledby="pills-biodata-tab">
                         <BiodataSeller
@@ -147,11 +147,13 @@ class TokoUser extends Component {
                   </Fragment>
                 ) : (
                     <Fragment>
-                      {alert("Anda belum terdaftar sebagai penjual\nSilahkan daftar terlebih dahulu!")}
-                      {/* MENDAFTARKAN TOKO BARU */}
-                      <TambahDataPenjual
-                        changeInputDataSeller={this.props.changeInputDataSeller}
-                        postData={this.postData} />
+                      <div style={{ padding: "20px" }}>
+                        {alert("Anda belum terdaftar sebagai penjual\nSilahkan daftar terlebih dahulu!")}
+                        {/* MENDAFTARKAN TOKO BARU */}
+                        <TambahDataPenjual
+                          changeInputDataSeller={this.props.changeInputDataSeller}
+                          postData={this.postData} />
+                      </div>
                     </Fragment>
                   )}
               </div>

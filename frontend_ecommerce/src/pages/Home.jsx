@@ -53,13 +53,13 @@ class Home extends Component {
             <h3>Kategori</h3>
             <div className="row">
               {listKategori.map((value) => (
-                <div className="col">
+                <div style={{ padding: "0 10px" }}>
                   <ListKategori namaKategori={value.tipe_produk} id={value.id} {...this.props} />
                 </div>
               ))}
             </div>
           </div>
-          <div>
+          <div style={{ marginTop: "30px" }}>
             <h3>Produk Terbaru</h3>
             {tampilkanHasilSplit("produk", splitProduk, this.props)}
           </div>

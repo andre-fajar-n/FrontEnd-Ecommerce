@@ -1,37 +1,32 @@
-#navbarResponsive ul li{padding: 0 5px;}
+.container{
+    margin-top: 150px;
+    margin-bottom: 70px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 15px;
+}
 
-.navbar{
-    background-color: #c70039;
+.form-control{
+    border-color: #f95959;
+    color: #f95959;
 }
 
 .btn-danger{
-    color: #c70039;
-    background-color: #f1f8fd;
-    border-color: #f1f8fd;
+    color: #ffffff;
+    background-color: #f95959;
+    border-color: #f95959;
 }
 
 .btn-danger:hover{
-    color: #f1f8fd;
-    background-color: #c70039;
-    border-color: #c70039;
+    color: #f95959;
+    background-color: #ffffff;
+    border-color: #f95959;
 }
-
-/* header{
-    background-color: #f8f9fa;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-    height: 55px;
-    margin: 0;
-    position: fixed;
-    z-index: 99999;
-    top : 0px;
-} */
-
-section{margin-top: 70px;}
-
-.dropdown-menu{z-index: 9999;}
+.button-category:focus{
+    color: #ffffff !important;
+    background-color: #fb8a8a !important;
+    border-color: #fb8a8a !important;
+}
 
 .logo{
     width: 500px;
@@ -42,8 +37,6 @@ section{margin-top: 70px;}
 footer{background-color: #c70039;}
 
 .form-daftar{margin: 10px 0;}
-
-.kategori-home{border-radius: 50%;}
 
 .tab-header{
     background-color: rgba(0,0,0,.03);
@@ -61,7 +54,48 @@ footer{background-color: #c70039;}
     border-radius: 20px;
 }
 
-/* start history buyer & seller */
+/* START HEADER */
+#navbarResponsive ul li{padding: 0 5px;}
+
+.navbar{
+    background-color: #ffffff;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 6px -1px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 6px -1px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 6px -1px;
+    position: fixed;
+    z-index: 99999;
+    top : 0px;
+    width: 100%;
+}
+
+.ikon{
+    font-size: 25px;
+    color: #f95959;
+}
+
+.ikon:hover{color: #fb8a8a  ;}
+/* END HEADER */
+
+/* START PAGE HOME */
+.kategori{
+    background-color: #ffffff !important;
+    border-radius: 15px;
+    color: #000000;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(92,92,92,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(92,92,92,1);
+    box-shadow: 0px 0px 5px 0px rgba(92,92,92,1);
+}
+.kategori:hover{
+    background-color: #ffffff !important;
+    color: #f95959;
+    text-decoration: none;
+    position: relative;
+    top: -10px;
+    transition: 1ms;
+}
+/* END PAGE HOME */
+
+/* START HISTORY BUYER & SELLER */
 .history, .history2{
     margin: 0;
     padding: 10px;
@@ -72,32 +106,37 @@ footer{background-color: #c70039;}
 .history{border-bottom: 2px solid #f0f0f0;}
 .history2{border-top: 2px solid #f0f0f0;}
 
+/* START PRODUK */
 .product{
     border: 2px solid #f0f0f0;
     border-radius: 20px;
-    -webkit-box-shadow: 0px 0px 2px 0px rgba(112,112,112,1);
-    -moz-box-shadow: 0px 0px 2px 0px rgba(112,112,112,1);
-    box-shadow: 0px 0px 2px 0px rgba(112,112,112,1);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(92,92,92,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(92,92,92,1);
+    box-shadow: 0px 0px 5px 0px rgba(92,92,92,1);
 }
-/* end history buyer & seller */
+
+a{color: #000000;}
+a .nama-toko{display: none;}
+a:hover{
+    color: #000000;
+    text-decoration: none;
+}
+a:hover .nama-toko{
+    display: block;
+}
+a:hover .alamat-toko{display: none;}
+/* END PRODUK */
+
+/* END HISTORY BUYER & SELLER */
 
 /* start toko user page */
 .toko-user{
-    margin-top: 70px;
-    margin-bottom: 70px;
     border: 1px solid rgba(0,0,0,.125);
     padding: 20px;
 }
 /* end toko user page */
 
 /* start profile page */
-.container{
-    margin-top: 70px;
-    margin-bottom: 70px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 15px;
-}
 
 .nav-tabs .nav-link{
     border-width: 2px;

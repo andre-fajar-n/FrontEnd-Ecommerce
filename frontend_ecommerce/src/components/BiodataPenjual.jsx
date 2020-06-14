@@ -14,12 +14,12 @@ const BiodataSeller = (props) => {
                   onChange={(e) => props.changeInputDataSeller(e)}
                   type="text" className="form-control"
                   defaultValue={props.dataSeller.nama} />
-                <button onClick={() => props.saveData("nama")} type="button" className="btn btn-danger">Save</button>
+                <button onClick={() => props.saveData("nama")} type="button" className="btn btn-danger button-category">Save</button>
               </div>
             ) : (
                 <div className="d-flex justify-content-between align-items-center">
                   <div>{props.dataSeller.nama}</div>
-                  <button onClick={() => props.editData("nama")} type="button" className="btn btn-danger">Edit</button>
+                  <button onClick={() => props.editData("nama")} type="button" className="btn btn-danger button-category">Edit</button>
                 </div>
               )}
           </div>
@@ -37,12 +37,12 @@ const BiodataSeller = (props) => {
                   onChange={(e) => props.changeInputDataSeller(e)}
                   type="text" className="form-control"
                   defaultValue={props.dataSeller.alamat} />
-                <button onClick={() => props.saveData("alamat")} type="button" className="btn btn-danger">Save</button>
+                <button onClick={() => props.saveData("alamat")} type="button" className="btn btn-danger button-category">Save</button>
               </div>
             ) : (
                 <div className="d-flex justify-content-between align-items-center">
                   <div>{props.dataSeller.alamat}</div>
-                  <button onClick={() => props.editData("alamat")} type="button" className="btn btn-danger">Edit</button>
+                  <button onClick={() => props.editData("alamat")} type="button" className="btn btn-danger button-category">Edit</button>
                 </div>
               )}
           </div>
@@ -60,12 +60,12 @@ const BiodataSeller = (props) => {
                   onChange={(e) => props.changeInputDataSeller(e)}
                   type="email" className="form-control"
                   defaultValue={props.dataSeller.email} />
-                <button onClick={() => props.saveData("email")} type="button" className="btn btn-danger">Save</button>
+                <button onClick={() => props.saveData("email")} type="button" className="btn btn-danger button-category">Save</button>
               </div>
             ) : (
                 <div className="d-flex justify-content-between align-items-center">
                   <div>{props.dataSeller.email}</div>
-                  <button onClick={() => props.editData("email")} type="button" className="btn btn-danger">Edit</button>
+                  <button onClick={() => props.editData("email")} type="button" className="btn btn-danger button-category">Edit</button>
                 </div>
               )}
           </div>
@@ -83,12 +83,12 @@ const BiodataSeller = (props) => {
                   onChange={(e) => props.changeInputDataSeller(e)}
                   type="text" className="form-control"
                   defaultValue={props.dataSeller.no_hp} />
-                <button onClick={() => props.saveData("nohp")} type="button" className="btn btn-danger">Save</button>
+                <button onClick={() => props.saveData("nohp")} type="button" className="btn btn-danger button-category">Save</button>
               </div>
             ) : (
                 <div className="d-flex justify-content-between align-items-center">
                   <div>{props.dataSeller.no_hp}</div>
-                  <button onClick={() => props.editData("nohp")} type="button" className="btn btn-danger">Edit</button>
+                  <button onClick={() => props.editData("nohp")} type="button" className="btn btn-danger button-category">Edit</button>
                 </div>
               )}
           </div>

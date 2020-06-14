@@ -33,10 +33,10 @@ export const getDataBuyer = () => {
 export const postDataBuyer = () => {
   return async (dispatch, getState) => {
     const bodyRequest = {
-      nama: getState().user.postNama,
-      alamat: getState().user.postAlamat,
-      email: getState().user.postEmail,
-      no_hp: getState().user.postNoHP,
+      nama: getState().buyer.postNama,
+      alamat: getState().buyer.postAlamat,
+      email: getState().buyer.postEmail,
+      no_hp: getState().buyer.postNoHP,
     }
 
     try {

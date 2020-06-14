@@ -14,7 +14,7 @@ export const tampilkanHasilSplit = (komponen, array, props) => {
     array.map((baris) => (
       <div className="row justify-content-center">
         {baris.map((value) => (
-          <div className={`col-md-${Math.floor(12 / baris.length)} d-flex justify-content-center`}>
+          <div className={`col-md-${Math.floor(12 / baris.length)} d-flex justify-content-center p-0`}>
             {pilihKomponen(komponen, value, props)}
           </div>
         ))}
