@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 class Daftar extends Component {
   postRegister = async () => {
     await this.props.register()
-    if (this.props.dataUser.status_internal) {
+    if (localStorage.getItem("status_internal")) {
       this.props.history.replace("/profil")
     }
   }

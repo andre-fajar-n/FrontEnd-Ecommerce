@@ -95,7 +95,7 @@ export const register = () => {
       // end get token for login
 
     } catch (error) {
-      alert("user have been registered")
+      alert("Akun sudah terdaftar")
     }
   }
 }

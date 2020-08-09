@@ -58,7 +58,8 @@ class Profil extends Component {
                 {this.props.dataBuyer.nama === undefined ? (
                   // isi biodata ketika biodata belum diisi
                   <div style={{ padding: "20px" }}>
-                    <h1>Isi Biodata</h1>
+                    {alert("Silahkan lengkapi Biodata Anda untuk bisa melakukan pembelian")}
+                    <h1 style={{ textAlign: "center" }}>Isi Biodata</h1>
                     <form style={{ display: "grid" }}>
                       <div className="form-group row">
                         <label for="postNama" className="col-sm-2 col-form-label">Nama</label>
