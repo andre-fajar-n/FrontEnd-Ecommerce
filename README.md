@@ -1,5 +1,5 @@
 # FrontEnd-Ecommerce
 
-link deploy : https://e-commerce.andreino.tech/
+[Click to view demo](https://andreino.vercel.app/)
 
-link backend : https://github.com/andre-fajar-n/BackEnd-Ecommerce
+[Backend's repo](https://github.com/andre-fajar-n/BackEnd-Ecommerce)
